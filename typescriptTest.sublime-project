@@ -1,0 +1,23 @@
+{
+	"build_systems":
+	[
+		{
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "Anaconda Python Builder",
+			"selector": "source.python",
+			"shell_cmd": "python -u \"$file\""
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "basic",
+			"file_exclude_patterns": ["*.js","*.map"],
+			"follow_symlinks":true
+		}
+	],
+	"settings":
+    {
+        "tab_size": 8
+    }
+}

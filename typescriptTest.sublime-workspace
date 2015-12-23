@@ -1,0 +1,626 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cons",
+				"constructor	keyword"
+			],
+			[
+				"cont",
+				"constructor	keyword"
+			],
+			[
+				"pro",
+				"providers	property"
+			],
+			[
+				"n",
+				"numbertype	property"
+			],
+			[
+				"ge",
+				"getElementById	method"
+			],
+			[
+				"to",
+				"toJSON	method"
+			],
+			[
+				"ion",
+				"ion-title"
+			],
+			[
+				"vi",
+				"views"
+			],
+			[
+				"h",
+				"h2	Tag"
+			],
+			[
+				"i",
+				"IndexView2	class"
+			],
+			[
+				"dja",
+				"django_markdown	module"
+			],
+			[
+				"slug",
+				"slugify	function"
+			],
+			[
+				"s",
+				"slugify	function"
+			],
+			[
+				"de",
+				"defaultfilters	module"
+			],
+			[
+				"if",
+				"if	if"
+			],
+			[
+				"gr",
+				"NUMBER_GROUPING"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 150.0,
+		"last_filter": "show",
+		"selected_items":
+		[
+			[
+				"show",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"ty",
+				"TypeScript: Quick Info Documentation"
+			],
+			[
+				"pac",
+				"Package Control: Enable Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ternjs",
+				"TernJS: Show Documentation For Selection"
+			],
+			[
+				"ter",
+				"TernJS: Jump To Definition"
+			],
+			[
+				"",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"disa",
+				"Anaconda: Display object docs"
+			],
+			[
+				"sub",
+				"SublimeLinter: Disable Linter"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"pref",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"prefe",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"t",
+				"TypeScript: Find References"
+			],
+			[
+				"packageint",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Function"
+			],
+			[
+				"pyt",
+				"Anaconda: Set Python interpreter"
+			],
+			[
+				"set",
+				"Set Syntax: Python"
+			],
+			[
+				"pa ",
+				"Package Control: List Packages"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"anaconda ",
+				"Anaconda: Run Current File Tests"
+			],
+			[
+				"ana",
+				"Anaconda: Run Project Tests"
+			],
+			[
+				"Package",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"this.clear",
+			"this.cls",
+			"cls",
+			"clear",
+			"console.clear",
+			"clear",
+			"cls",
+			"pre",
+			"prefs",
+			"prefe",
+			"pref",
+			"os",
+			"from django.core.management import execute_from_command_line",
+			"sys.argv",
+			"import django",
+			"os.environ.setdefault(\"DJANGO_SETTINGS_MODULE\", \"mysite.settings\")",
+			"import os",
+			"os.environ.setdefault(\"DJANGO_SETTINGS_MODULE\", \"mysite.settings\")",
+			"sys.argv",
+			"sys.path",
+			"sys",
+			"sys.argv",
+			"sys.arg",
+			"sys.arg[]",
+			"import sys",
+			"import django",
+			"sys.prefix",
+			"sys.path",
+			"print (sys.prefix)",
+			"print sys.prefix",
+			"import sys",
+			"from django.contrib.auth.models import User",
+			"[sys.path[i] for i in sys.path.count]",
+			"sys.path",
+			"path",
+			"from django.contrib.auth.models import User",
+			"sys.var",
+			"sys.path",
+			"import sys",
+			"sys.path",
+			"path",
+			"from manage import *",
+			"from manage ",
+			"from .manage import *",
+			"v",
+			"v =3",
+			"manage.py",
+			"manage",
+			"python manage.py",
+			"python",
+			"import eje2",
+			"windows[0]",
+			"windows",
+			"view.",
+			"import nltk",
+			"dir()",
+			"grafo",
+			"grafp",
+			"dsa",
+			"dsdas",
+			"ss",
+			"ds",
+			"version",
+			"path",
+			"python",
+			"import ntlk",
+			"sys.path",
+			"import sys",
+			"a",
+			"print(a)",
+			"a = 20",
+			"os.path",
+			"from eje1 import *",
+			"os.path",
+			"import eje1",
+			"import os",
+			"python",
+			"fib2(20)",
+			"python eje1",
+			"fib2(20)",
+			"import",
+			"import djanfo",
+			"clear",
+			"cls",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"ptint",
+			"print grafo.relaciones[\"BuenosAires\"]",
+			"print materias[\"buenos aires\"]",
+			"print grafo.relaciones",
+			"print grafo.relaciones.index[0]",
+			"print grafo.relaciones[0]",
+			"print grafo",
+			"print",
+			"grafo.index(0)",
+			"print grafo",
+			"grafo"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/walter.mariscal/Desarrollos/typescript/basic"
+	],
+	"file_history":
+	[
+		"/C/Users/walter.mariscal/Desarrollos/typescript/basic/testscript.html",
+		"/C/Users/walter.mariscal/Desarrollos/typescript/basic/style.css",
+		"/C/Users/walter.mariscal/Desarrollos/typescript/basic/interfaces-classes.ts",
+		"/C/Users/walter.mariscal/Desarrollos/typescript/basic/interfaces-classes.js",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/index.html",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/app.component.ts",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Packages/User/TypeScript.sublime-settings",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/walter.mariscal/Desarrollos/typescript/typescriptTest.sublime-project",
+		"/C/Users/walter.mariscal/Desarrollos/typescript/basic/e.html",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Packages/User/Git.sublime-settings",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Packages/User/Emmet.sublime-settings",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/pipe/fetch-json.pipe.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/pipe/heroes.json",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/pipe/power-booster.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/basic/interfaces-classes.ts",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Packages/User/TypeScriptReact.sublime-settings",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/package.json",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/bower_components/fetch/fetch.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/bower_components/fetch/.bower.json",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/client/parties-form/parties-form.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app1/hero-form.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app1/app.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app1/HeroesComponent.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app1/show-properties.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/userinput/user-input.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/herocard/hero-editor.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/herocard/edit-item.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/herocard/HeroesListComponent.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/herocard/mock-heroes.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/crisis-center.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/structural-directives/structural-directives.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/structural-directives/heavy-loader.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/pipe/exponential-strength.pipe.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app1/hero-detail.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/userinput/little-tour.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/userinput/loop-back.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/userinput/click-me.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/userinput/keyup.components.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/structural-directives.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/heroes/hero-list.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/styles.css",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/heroes/hero-detail.component.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/userinput/keyup.components.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app1/keyup.components.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/crisis.service.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/heroes/hero.service.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/boot.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/herocard/restore.service.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/heroes/hero-detail.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/crisis-list.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/heavy-loader.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/unless.directive.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/herocard/HeroService.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/herocard/logger.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/herocard/hero.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/herocard/hero-card.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/crisis-detail.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app1/hero.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/structural-directives.component.html",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app1/HeroesListComponent.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/collections/parties.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/collections/images.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/dialog.service.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/tsconfig.json",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/structural-directives.component.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/structural-directives.components.js.map",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app1/boot.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/crisis-center/crisis.service.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/heroes/hero-list.component.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/app.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/boot.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/heroes/hero-list.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/heroes/hero-detail.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/heroes/hero.service.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/crisis-center/crisis.service.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/crisis-center/crisis-list.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/crisis-center/crisis-detail.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/crisis-center/crisis-center.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/dialog.service.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/crisis-center/crisis-center.component.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app2/boot.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/heroes/app.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/heroes/boot.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/funsport/server/load_initialdata.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/boot.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/heroes/heroe.service.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/hero-form.component.html",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/hero-form.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/HeroesComponent.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/HeroesListComponent.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/HeroService.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/logger.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/promise.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/show-properties.js.map",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/show-properties.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/mock-heroes.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/userinput.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/click-me.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/keyup.components.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/loop-back.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/hero-detail.component.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/hero.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/client/party-details/party-details.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/client/parties-list/parties-list.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/client/parties-list/parties-list.html",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/app.component.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/hero-form.component.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/userinput.js",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/app/HeroesComponent.js.map",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/src/tsconfig.json",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/src/index.html",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/test1/src/app/boot.ts",
+		"/C/Users/walter.mariscal/Desarrollos/Angular2/ng2-play/package.json",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/server/load_parties.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/client/parties-form/parties-form.html",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/client/party-details/party-details.html",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/typings/meteor-accounts.d.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/typings/angular2/router.d.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/typings/party.d.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/server/parties.ts",
+		"/C/Users/walter.mariscal/Desarrollos/MeteorJS/sociallyAngular2/server/main.ts",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Packages/User/JSON.sublime-settings",
+		"/C/Users/walter.mariscal/AppData/Roaming/Sublime Text 3/Installed Packages/TernJS.sublime-package"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"RequireUser",
+			"()\n",
+			"RequireUser",
+			"MeteorComponent",
+			"MeteorComponent ",
+			"meteorcomponent",
+			"party",
+			"sp",
+			"HEROES",
+			"Platform",
+			"platform",
+			"Platform",
+			"platform",
+			"date",
+			"buenosAires",
+			"BuenosAires",
+			"buenosAires",
+			"relacionar(grafo, buenosAires, sanPedro)\nrelacionar(grafo, buenosAires, sanLuis)\nrelacionar(grafo, buenosAires, bahiaBlanca)\nrelacionar(grafo, buenosAires, sanLuis)\nrelacionar(grafo, sanLuis, mendoza)\nrelacionar(grafo, sanLuis, villaMaria)\nrelacionar(grafo, sanLuis, bahiaBlanca)\nrelacionar(grafo, villaMaria, cordoba)\nrelacionar(grafo, villaMaria, rosario)\nrelacionar(grafo, rosario, sanPedro)\n",
+			"relacionar(grafo, buenosAires, sanPedro)\n",
+			"print(",
+			"print",
+			"print(",
+			"print"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"buenosAires"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.errorlist":
+	{
+		"height": 100.0
+	},
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 100.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "Packages/TypeScript/TypeScript.sublime-build",
+	"project": "typescriptTest.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\whatsapp\\proyecto.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Question"
+			]
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"last_automatic_layout":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		]
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 281.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 3
+	}
+}

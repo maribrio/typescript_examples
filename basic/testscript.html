@@ -1,0 +1,58 @@
+<head>
+<link rel="stylesheet" href="styles.css">
+<script type="text/javascript" src="interfaces-classes.js"> </script>
+<script> 
+var n=0;
+function Test() {
+    try {
+        var object;
+         
+        var x = document.getElementById("gender");
+        var i = x.selectedIndex;
+        x.options[i].text;
+        
+        document.getElementById("param").innerHTML =
+        document.getElementById('name').value + " " +
+        x.options[i].text + " " + 
+        document.getElementById('age').value
+        
+        object= CreateSportman (
+        document.getElementById('name').value,
+        document.getElementById('gender').value,
+        document.getElementById('age').value
+        );
+        document.getElementById("result").innerHTML =
+        "user <strong>" + object.name + "</strong> has <i>" + object.getGendername() + "</i> gender registered " + 
+        " and is <b>" + object.age + "</b> years old " + " with category level <b>" +
+         object.getAgelevelname() + "</b>";
+        }
+        
+    catch(err) {
+        document.getElementById("error").innerHTML = err.message;
+    }  
+    finally {
+        ++n;
+        document.getElementById("nro").innerHTML = n;
+    }
+ }
+</script>
+</head>
+<body>
+    <h1> TEST OBJECTS IN TYPESCRIPT </h1>
+    <label> name </label>  
+    <input id="name" type ="text" required placeholder="write name"> </input>
+    <label> gender </label>  
+    <select id="gender">
+        <option value="1" name = "Male">Male</option>
+        <option value="2" name = "Female">Female</option>
+    </select>
+    <label> age </label>  
+    <input id="age" type ="number" min="1" max="80" value="5" > </input>
+    <button onclick="Test()"> test </button>
+    <div>
+    parameters: <span id="param"> </span> <br>
+    result: <p id="result"> </p>
+    errors: <p id="error"> </p>
+    tries: <p id="nro"> </p>
+    </div>
+</body>
