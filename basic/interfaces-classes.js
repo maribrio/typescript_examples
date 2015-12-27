@@ -11,7 +11,25 @@ String
 Symbol (new in ECMAScript 6)
 
 */
-/// <reference path="./checking.ts" />
+/// <reference path="./internalmodule.ts" />    // example to import internal modules (typescript code file). must compile tsc --out
+//example to import external module (typescript file).
+var moduleExample = require('./externalmodule');
+var lettervalidator = moduleExample.LettersOnlyValidator; // use alias
+// Some samples to try
+var strings = ['Hello', '98052', '101'];
+// Validators to use
+var validators = {};
+validators['ZIP code'] = new moduleExample.ZipCodeValidator();
+validators['Letters only'] = new lettervalidator();
+// Show whether each string passed each validator
+strings.forEach(function (s) {
+    for (var name in validators) {
+        console.log('"' + s + '" ' + (validators[name].isAcceptable(s) ? ' matches ' : ' does not match ') + name);
+    }
+});
+///<reference path="declare.d.ts"/>
+var url = require("url");
+var myUrl = url.parse("http://www.typescriptlang.org");
 //declare variables
 var isdone = false; //boolean type variable with assignment
 var maxageallowed = 80; //number type variable with assignment
@@ -53,6 +71,14 @@ var sportman = (function () {
         this.name = name;
         if (name == "") {
             this.name = defaultName;
+        }
+        else {
+            if (validators['Letters only'].isAcceptable(name)) {
+                this.name = name;
+            }
+            else {
+                throw 'value name not allowed';
+            }
         }
         this.gender = gender;
         //ways to check optional parameters
@@ -127,8 +153,7 @@ function CreateSportman(newname, newgender, newage) {
 var obj1, obj2;
 var s;
 var b;
-//Validation.CheckPropertObject ('age',sport-man);
-obj1 = CreateSportman('ANA', gender.female, 15);
+obj1 = CreateSportman('ANA2', gender.female, 15);
 s = obj1.getAgelevelname();
 s = obj1.getGendername();
 b = obj1 instanceof sportman; // operator to check prototype   

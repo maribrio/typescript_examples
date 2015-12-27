@@ -13,7 +13,29 @@ Symbol (new in ECMAScript 6)
 */
 
 
-/// <reference path="./checking.ts" />
+/// <reference path="./internalmodule.ts" />    // example to import internal modules (typescript code file). must compile tsc --out
+
+
+ //example to import external module (typescript file).
+import moduleExample = require('./externalmodule'); 
+import lettervalidator = moduleExample.LettersOnlyValidator; // use alias
+
+// Some samples to try
+var strings = ['Hello', '98052', '101'];
+// Validators to use
+var validators: { [s: string]: moduleExample.StringValidator; } = {};
+validators['ZIP code'] = new moduleExample.ZipCodeValidator();
+validators['Letters only'] = new lettervalidator();
+// Show whether each string passed each validator
+/*strings.forEach(s => {
+    for (var name in validators) {
+        console.log('"' + s + '" ' + (validators[name].isAcceptable(s) ? ' matches ' : ' does not match ') + name);
+    }
+});*/
+
+///<reference path="declare.d.ts"/>
+import url = require("url");
+var myUrl = url.parse("http://www.typescriptlang.org");  
 
 //declare variables
 var isdone:boolean = false; //boolean type variable with assignment
@@ -86,8 +108,13 @@ class sportman implements sportyman {
     constructor(public name: string=defaultName,gender:gender=defaultgender,age?:number) { 
      // public mandatory property 'name' define in the constructor
     // gender property with default value define in the constructor
-    
+           
             if (name == "") {this.name = defaultName;}
+            else {
+                 if (validators['Letters only'].isAcceptable(name)) {this.name= name;}
+                 else {throw 'value name not allowed'}
+            }
+            
             this.gender = gender;
             //ways to check optional parameters
                     if (typeof age === 'undefined') {return} //use typeof operator to check type, return string type
@@ -144,10 +171,10 @@ var obj1,obj2: sportman;
 var s:string;
 var b:boolean;
 
-//Validation.CheckPropertObject ('age',sport-man);
+
 
 obj1=CreateSportman (
-    'ANA',
+    'ANA2',
     gender.female,15
     );
 s= obj1.getAgelevelname();
