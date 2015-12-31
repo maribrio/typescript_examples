@@ -1,27 +1,13 @@
-var InternalFileValidation;
-(function (InternalFileValidation) {
-    var lettersRegexp = /^[A-Za-z]+$/;
-    var LettersOnlyValidator = (function () {
-        function LettersOnlyValidator() {
+// example to export internal modules the calling module must use reference /// <reference path="./internalmodule.ts" /> 
+// must be compiled tsc --out using the calling module or add it as a script
+// Validators array to be exported as internal modules
+var InternalValidation;
+(function (InternalValidation) {
+    var demo = (function () {
+        function demo() {
         }
-        LettersOnlyValidator.prototype.isAcceptable = function (s) {
-            return lettersRegexp.test(s);
-        };
-        return LettersOnlyValidator;
+        return demo;
     })();
-    InternalFileValidation.LettersOnlyValidator = LettersOnlyValidator;
-})(InternalFileValidation || (InternalFileValidation = {}));
-var InternalFileValidation;
-(function (InternalFileValidation) {
-    var numberRegexp = /^[0-9]+$/;
-    var ZipCodeValidator = (function () {
-        function ZipCodeValidator() {
-        }
-        ZipCodeValidator.prototype.isAcceptable = function (s) {
-            return s.length === 5 && numberRegexp.test(s);
-        };
-        return ZipCodeValidator;
-    })();
-    InternalFileValidation.ZipCodeValidator = ZipCodeValidator;
-})(InternalFileValidation || (InternalFileValidation = {}));
+    InternalValidation.demo = demo;
+})(InternalValidation || (InternalValidation = {}));
 //# sourceMappingURL=internalmodule.js.map

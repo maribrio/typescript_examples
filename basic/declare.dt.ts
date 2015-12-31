@@ -1,15 +1,25 @@
 
 //Ambient Internal Modules
-declare module ExternalAmbientExample {
-    export interface Class1 {
-        
+declare module D3 {
+    export interface Selectors {
+        select: {
+            (selector: string): Selection;
+            (element: EventTarget): Selection;
         };
     }
 
-    
+    export interface Event {
+        x: number;
+        y: number;
+    }
+
+    export interface Base extends Selectors {
+        event: Event;
+    }
 }
 
-declare var d1: ExternalAmbientExample.Class1;
+declare var d3: D3.Base
+
 
 //Ambient External Modules
 declare module "url" {

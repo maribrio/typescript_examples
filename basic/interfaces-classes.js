@@ -11,23 +11,9 @@ String
 Symbol (new in ECMAScript 6)
 
 */
-/// <reference path="./internalmodule.ts" />    // example to import internal modules (typescript code file). must compile tsc --out
-//example to import external module (typescript file).
-var moduleExample = require('./externalmodule');
-var lettervalidator = moduleExample.LettersOnlyValidator; // use alias
-// Some samples to try
-var strings = ['Hello', '98052', '101'];
-// Validators to use
-var validators = {};
-validators['ZIP code'] = new moduleExample.ZipCodeValidator();
-validators['Letters only'] = new lettervalidator();
-// Show whether each string passed each validator
-strings.forEach(function (s) {
-    for (var name in validators) {
-        console.log('"' + s + '" ' + (validators[name].isAcceptable(s) ? ' matches ' : ' does not match ') + name);
-    }
-});
-///<reference path="declare.d.ts"/>
+var externalmodule_1 = require('./externalmodule'); // use ECMA6
+//example to import ambient declare files
+///<reference path="./declare.dt.ts"/>
 var url = require("url");
 var myUrl = url.parse("http://www.typescriptlang.org");
 //declare variables
@@ -62,6 +48,7 @@ var defaultgender = gender.male; //assign default value from gender enum
 var anyvalue; //any type variable (anyvalue = '' or anyvalue = 10,etc)
 function warnmsg() { alert('data not allowed'); }
 ; // void type for non-return functions
+var l;
 var sportman = (function () {
     function sportman(name, gender, age) {
         // public mandatory property 'name' define in the constructor
@@ -73,7 +60,7 @@ var sportman = (function () {
             this.name = defaultName;
         }
         else {
-            if (validators['Letters only'].isAcceptable(name)) {
+            if (externalmodule_1.validators['Letters only'].isAcceptable(name)) {
                 this.name = name;
             }
             else {
@@ -91,9 +78,17 @@ var sportman = (function () {
         if (age === void 0) {
         }
     }
+    sportman.prototype.AddSports = function (Sportname) {
+        var restOfName = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            restOfName[_i - 1] = arguments[_i];
+        }
+        return Sportname + " " + restOfName.join(" ");
+    };
     Object.defineProperty(sportman.prototype, "id", {
         get: function () { return this._id; } // get property
         ,
+        //use accessor
         set: function (newid) { if (newid >= 0) {
             this._id = newid;
         } } //set property
@@ -150,13 +145,18 @@ function CreateSportman(newname, newgender, newage) {
     var sportguy = new sportman(newname, newgender, newage);
     return sportguy;
 }
-var obj1, obj2;
-var s;
-var b;
-obj1 = CreateSportman('ANA2', gender.female, 15);
-s = obj1.getAgelevelname();
-s = obj1.getGendername();
-b = obj1 instanceof sportman; // operator to check prototype   
-b = 'age' in obj1; //operator check property in a instantiated object
-obj2 = CreateSportman('JORGE', gender.male, 14);
+function Testobjects() {
+    var obj1, obj2;
+    var s;
+    var b;
+    obj1 = CreateSportman('ANA', gender.female, 15);
+    s = obj1.getAgelevelname();
+    s = obj1.getGendername();
+    b = obj1 instanceof sportman; // operator to check prototype   
+    b = 'age' in obj1; //operator check property in a instantiated object
+    obj2 = CreateSportman('JORGE', gender.male, 14);
+}
+var externalmodule_2 = require('./externalmodule'); // use ECMA6
+externalmodule_2.testValidation();
+Testobjects();
 //# sourceMappingURL=interfaces-classes.js.map

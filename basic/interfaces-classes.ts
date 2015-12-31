@@ -12,28 +12,17 @@ Symbol (new in ECMAScript 6)
 
 */
 
-
-/// <reference path="./internalmodule.ts" />    // example to import internal modules (typescript code file). must compile tsc --out
-
+// example to import internal modules (typescript code file). must compile tsc --out
+///<reference path='internalmodule.ts'/> 
+import test = InternalValidation.demo
 
  //example to import external module (typescript file).
 import moduleExample = require('./externalmodule'); 
-import lettervalidator = moduleExample.LettersOnlyValidator; // use alias
+import dataValidator = moduleExample.validators; // use alias
+import {validators} from './externalmodule'; // use ECMA6
 
-// Some samples to try
-var strings = ['Hello', '98052', '101'];
-// Validators to use
-var validators: { [s: string]: moduleExample.StringValidator; } = {};
-validators['ZIP code'] = new moduleExample.ZipCodeValidator();
-validators['Letters only'] = new lettervalidator();
-// Show whether each string passed each validator
-/*strings.forEach(s => {
-    for (var name in validators) {
-        console.log('"' + s + '" ' + (validators[name].isAcceptable(s) ? ' matches ' : ' does not match ') + name);
-    }
-});*/
-
-///<reference path="declare.d.ts"/>
+//example to import ambient declare files
+///<reference path="./declare.dt.ts"/>
 import url = require("url");
 var myUrl = url.parse("http://www.typescriptlang.org");  
 
@@ -54,6 +43,7 @@ var anyvalue: any; //any type variable (anyvalue = '' or anyvalue = 10,etc)
 
 function warnmsg():void {alert('data not allowed')}; // void type for non-return functions
 
+
 //interfaces to define contracts (structural sub-typing)
 interface ageLevelAssignment {
 	(gender: gender, age?: number): agelevel; //function type with optional age argument
@@ -61,13 +51,15 @@ interface ageLevelAssignment {
 
 interface Sports {
 	[index: number]: string; //  array type with numeric index for sports list
-	Name: string;
-	IconName: boolean;
+	mainSport: string;
+	useCalendar: boolean;
 }
+var l:Sports;
+
 
 interface SportsIconName {
 	[index: string]: string; //  array type with string index (dictionary)
-	IconImg: string;
+	mainSport: string;
 }
 
 interface person {
@@ -105,6 +97,10 @@ class sportman implements sportyman {
     private _age:number; //private property
     agelevel:agelevel;
     PreferedSports:Sports; // public property (array)
+    
+    AddSports(Sportname: string, ...restOfName: Sports[]) {
+	return Sportname + " " + restOfName.join(" ");
+}
     constructor(public name: string=defaultName,gender:gender=defaultgender,age?:number) { 
      // public mandatory property 'name' define in the constructor
     // gender property with default value define in the constructor
@@ -126,6 +122,7 @@ class sportman implements sportyman {
                     }
     }
     
+    //use accessor
     set id(newid:number) {if (newid >= 0) { this._id = newid}} //set property
     get id():number { return this._id} // get property
     
@@ -166,28 +163,32 @@ function CreateSportman(newname: string, newgender:gender,newage?:number):any
         
 }
 
+function Testobjects() {
+    var obj1,obj2: sportman;
+    var s:string;
+    var b:boolean;
 
-var obj1,obj2: sportman;
-var s:string;
-var b:boolean;
 
 
+    obj1=CreateSportman (
+        'ANA',
+        gender.female,15
+        );
+    s= obj1.getAgelevelname();
+    s= obj1.getGendername();    
 
-obj1=CreateSportman (
-    'ANA2',
-    gender.female,15
-    );
-s= obj1.getAgelevelname();
-s= obj1.getGendername();    
+        
+    b= obj1 instanceof sportman // operator to check prototype   
+    b =  'age' in obj1; //operator check property in a instantiated object
 
-    
-b= obj1 instanceof sportman // operator to check prototype   
-b =  'age' in obj1; //operator check property in a instantiated object
+    obj2=   CreateSportman (
+        'JORGE',
+        gender.male,
+        14
+        );
+        
+}
 
-obj2=   CreateSportman (
-    'JORGE',
-    gender.male,
-    14
-    );
-    
- 
+import {testValidation} from './externalmodule'; // use ECMA6
+testValidation();
+Testobjects();

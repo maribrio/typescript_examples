@@ -1,7 +1,12 @@
 {
     "compilerOptions": {
-        "target": "ES5",
-        "module": "amd",
+        "target": "es5",
+        "module": "commonjs",
         "sourceMap": true
-    }
+    },
+    "files": [
+        "basic/interfaces-classes.ts",
+        "basic/internalmodule.ts",
+        "basic/generic.ts"
+    ]
 }

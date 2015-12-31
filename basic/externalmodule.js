@@ -20,9 +20,34 @@ var ZipCodeValidator = (function () {
     return ZipCodeValidator;
 })();
 exports.ZipCodeValidator = ZipCodeValidator;
-/* export only one member of the module
+var AgeRegexp = /^[0-9][0-9]$/;
+var AgeValidator = (function () {
+    function AgeValidator() {
+    }
+    AgeValidator.prototype.isAcceptable = function (s) {
+        return AgeRegexp.test(s);
+    };
+    return AgeValidator;
+})();
+exports.AgeValidator = AgeValidator;
+/* the following expression export only one member of the module
 export = function suma(a: number, b: number): number {
     return a + b
 }
-*/ 
+*/
+exports.validators = {};
+exports.validators['ZIP code'] = new ZipCodeValidator();
+exports.validators['Letters only'] = new LettersOnlyValidator();
+exports.validators['age'] = new AgeValidator();
+function testValidation() {
+    // Some samples to try
+    var strings = ['Hello', '98052', '101', '20', '02', 'f4'];
+    // Show whether each string passed each validator
+    strings.forEach(function (s) {
+        for (var name in exports.validators) {
+            console.log('"' + s + '" ' + (exports.validators[name].isAcceptable(s) ? ' matches ' : ' does not match ') + name);
+        }
+    });
+}
+exports.testValidation = testValidation;
 //# sourceMappingURL=externalmodule.js.map

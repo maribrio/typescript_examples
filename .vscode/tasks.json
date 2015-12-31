@@ -21,7 +21,8 @@
 	"showOutput": "silent",
 
 	// args is the HelloWorld program to compile.
-	"args": ["--sourcemap","basic/interfaces-classes.ts","basic/internalmodule.ts"],
+    "args": ["-p", "."],
+	//"args": ["--sourcemap","basic/interfaces-classes.ts","basic/internalmodule.ts"],
 
 	// use the standard tsc problem matcher to find compile problems
 	// in the output.
