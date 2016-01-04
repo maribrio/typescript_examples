@@ -23,37 +23,29 @@ var minageallowed = 8; // number type constant
 var defaultName = 'Anonymous'; // string type constant
 var title = 'type script example for basic types'; //string type
 var sportnames = ['tennis', 'soccer', 'basketball']; //string array type
+// sport interfaces & classes.
 //enum type
-var gender;
 (function (gender) {
     gender[gender["male"] = 1] = "male";
     gender[gender["female"] = 2] = "female";
-})(gender || (gender = {}));
+})(exports.gender || (exports.gender = {}));
+var gender = exports.gender;
 ; // set of numeric values with names, beginning with 1
-var sportmanlevel;
-(function (sportmanlevel) {
-    sportmanlevel[sportmanlevel["beginner"] = 10] = "beginner";
-    sportmanlevel[sportmanlevel["basic"] = 20] = "basic";
-    sportmanlevel[sportmanlevel["advance"] = 30] = "advance";
-})(sportmanlevel || (sportmanlevel = {}));
-; // set of numeric values with names for each value, set all values
-var agelevel;
 (function (agelevel) {
     agelevel[agelevel["child"] = 10] = "child";
     agelevel[agelevel["adult"] = 20] = "adult";
     agelevel[agelevel["noespecified"] = 50] = "noespecified";
-})(agelevel || (agelevel = {}));
+})(exports.agelevel || (exports.agelevel = {}));
+var agelevel = exports.agelevel;
 ;
 var defaultgender = gender.male; //assign default value from gender enum
 var anyvalue; //any type variable (anyvalue = '' or anyvalue = 10,etc)
 function warnmsg() { alert('data not allowed'); }
 ; // void type for non-return functions
-var l;
-var sportman = (function () {
-    function sportman(name, gender, age) {
+var Sportman = (function () {
+    function Sportman(name, gender, age) {
         // public mandatory property 'name' define in the constructor
         // gender property with default value define in the constructor
-        if (name === void 0) { name = defaultName; }
         if (gender === void 0) { gender = defaultgender; }
         this.name = name;
         if (name == "") {
@@ -78,14 +70,14 @@ var sportman = (function () {
         if (age === void 0) {
         }
     }
-    sportman.prototype.AddSports = function (Sportname) {
+    Sportman.prototype.AddSports = function (Sportname) {
         var restOfName = [];
         for (var _i = 1; _i < arguments.length; _i++) {
             restOfName[_i - 1] = arguments[_i];
         }
         return Sportname + " " + restOfName.join(" ");
     };
-    Object.defineProperty(sportman.prototype, "id", {
+    Object.defineProperty(Sportman.prototype, "id", {
         get: function () { return this._id; } // get property
         ,
         //use accessor
@@ -96,7 +88,7 @@ var sportman = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(sportman.prototype, "age", {
+    Object.defineProperty(Sportman.prototype, "age", {
         get: function () { return this._age; },
         set: function (newage) {
             if (newage === undefined) {
@@ -107,7 +99,7 @@ var sportman = (function () {
                 throw 'age: not numeric value';
             }
             ;
-            if (newage >= sportman.minage && newage <= sportman.maxage) {
+            if (newage >= Sportman.minage && newage <= Sportman.maxage) {
                 this._age = newage;
                 this.agelevel = this.assignAgelevel(this.gender, newage);
             }
@@ -118,13 +110,13 @@ var sportman = (function () {
         enumerable: true,
         configurable: true
     });
-    sportman.prototype.getAgelevelname = function () {
+    Sportman.prototype.getAgelevelname = function () {
         return agelevel[this.agelevel];
     };
-    sportman.prototype.getGendername = function () {
+    Sportman.prototype.getGendername = function () {
         return gender[this.gender];
     };
-    sportman.prototype.assignAgelevel = function (genderparam, ageparam) {
+    Sportman.prototype.assignAgelevel = function (genderparam, ageparam) {
         var result;
         if (ageparam) {
             result = genderparam == gender.male ?
@@ -136,27 +128,91 @@ var sportman = (function () {
         }
         return result;
     };
-    sportman.minage = minageallowed; //static property only class visible
-    sportman.maxage = maxageallowed; //static property only class visible
-    return sportman;
+    Sportman.minage = minageallowed; //static property only class visible
+    Sportman.maxage = maxageallowed; //static property only class visible
+    return Sportman;
 })();
+exports.Sportman = Sportman;
 ;
-function CreateSportman(newname, newgender, newage) {
-    var sportguy = new sportman(newname, newgender, newage);
-    return sportguy;
-}
-function Testobjects() {
-    var obj1, obj2;
-    var s;
-    var b;
-    obj1 = CreateSportman('ANA', gender.female, 15);
-    s = obj1.getAgelevelname();
-    s = obj1.getGendername();
-    b = obj1 instanceof sportman; // operator to check prototype   
-    b = 'age' in obj1; //operator check property in a instantiated object
-    obj2 = CreateSportman('JORGE', gender.male, 14);
-}
-var externalmodule_2 = require('./externalmodule'); // use ECMA6
-externalmodule_2.testValidation();
-Testobjects();
+// sport interfaces & classes.
+(function (sporttypes) {
+    sporttypes[sporttypes["faceoff"] = 1] = "faceoff";
+    sporttypes[sporttypes["share"] = 2] = "share";
+})(exports.sporttypes || (exports.sporttypes = {}));
+var sporttypes = exports.sporttypes;
+;
+(function (sportnumbertypes) {
+    sportnumbertypes[sportnumbertypes["individual"] = 1] = "individual";
+    sportnumbertypes[sportnumbertypes["group"] = 2] = "group";
+})(exports.sportnumbertypes || (exports.sportnumbertypes = {}));
+var sportnumbertypes = exports.sportnumbertypes;
+;
+(function (sportstatus) {
+    sportstatus[sportstatus["active"] = 1] = "active";
+    sportstatus[sportstatus["inactive"] = 2] = "inactive";
+    sportstatus[sportstatus["blocked"] = 3] = "blocked";
+    sportstatus[sportstatus["future"] = 4] = "future";
+})(exports.sportstatus || (exports.sportstatus = {}));
+var sportstatus = exports.sportstatus;
+;
+var Sport = (function () {
+    function Sport(sportname) {
+        this.name = sportname;
+        /*		this.iconname = sport.iconname;
+                this.status = sport.status;
+                this.type = sport.type;
+                this.numbertype = sport.numbertype;
+                */
+    }
+    return Sport;
+})();
+exports.Sport = Sport;
+;
+// sportprofiles interfaces & classes.
+(function (sportmanlevel) {
+    sportmanlevel[sportmanlevel["beginner"] = 10] = "beginner";
+    sportmanlevel[sportmanlevel["basic"] = 20] = "basic";
+    sportmanlevel[sportmanlevel["intermediate"] = 30] = "intermediate";
+    sportmanlevel[sportmanlevel["advance"] = 40] = "advance";
+    sportmanlevel[sportmanlevel["expert"] = 50] = "expert";
+})(exports.sportmanlevel || (exports.sportmanlevel = {}));
+var sportmanlevel = exports.sportmanlevel;
+; // set of numeric values with names for each value, set all values
+var Sportmanprofile = (function () {
+    function Sportmanprofile(sportman, sport) {
+        this.level = sportmanlevel.basic;
+        this.ranking = 0;
+        this.sportman = sportman;
+        this.sport = sport;
+        this.rankedperformance = { points: 0, games: 0, wins: 0, lose: 0, draw: 0 };
+        this.friendlyperformance = { points: 0, games: 0, wins: 0, lose: 0, draw: 0 };
+    }
+    Sportmanprofile.prototype.getsportmanlevelname = function () {
+        return sportmanlevel[this.level];
+    };
+    return Sportmanprofile;
+})();
+exports.Sportmanprofile = Sportmanprofile;
+var Factory = (function () {
+    function Factory() {
+    }
+    Factory.prototype.CreateSportman = function (sportmanName, newgender, newage) {
+        var sportguy = new Sportman(sportmanName, newgender, newage);
+        return sportguy;
+    };
+    Factory.prototype.CreateSport = function (sportName) {
+        var sport = new Sport(sportName);
+        return sport;
+    };
+    Factory.prototype.CreateSportProfile = function (sportmanName, sportName) {
+        var sportman;
+        var sport;
+        sportman = new Sportman(sportmanName);
+        sport = new Sport(sportName);
+        var sportprofile = new Sportmanprofile(sportman, sport);
+        return sportprofile;
+    };
+    return Factory;
+})();
+exports.funsportyFactory = new Factory();
 //# sourceMappingURL=interfaces-classes.js.map

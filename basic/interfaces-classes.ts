@@ -33,10 +33,12 @@ const minageallowed:number = 8;// number type constant
 const defaultName = 'Anonymous'; // string type constant
 var title:string = 'type script example for basic types'; //string type
 var sportnames:string[]= ['tennis','soccer','basketball'];//string array type
+
+// sport interfaces & classes.
 //enum type
-enum gender {male=1,female}; // set of numeric values with names, beginning with 1
-enum sportmanlevel{beginner = 10,basic=20,advance=30}; // set of numeric values with names for each value, set all values
-enum agelevel{child=10,adult=20,noespecified=50};
+export enum gender {male=1,female}; // set of numeric values with names, beginning with 1
+
+export enum agelevel{child=10,adult=20,noespecified=50};
 
 var defaultgender: gender = gender.male; //assign default value from gender enum
 var anyvalue: any; //any type variable (anyvalue = '' or anyvalue = 10,etc)
@@ -44,8 +46,9 @@ var anyvalue: any; //any type variable (anyvalue = '' or anyvalue = 10,etc)
 function warnmsg():void {alert('data not allowed')}; // void type for non-return functions
 
 
+
 //interfaces to define contracts (structural sub-typing)
-interface ageLevelAssignment {
+export interface ageLevelAssignment {
 	(gender: gender, age?: number): agelevel; //function type with optional age argument
 }
 
@@ -54,39 +57,39 @@ interface Sports {
 	mainSport: string;
 	useCalendar: boolean;
 }
-var l:Sports;
-
 
 interface SportsIconName {
 	[index: string]: string; //  array type with string index (dictionary)
 	mainSport: string;
 }
 
-interface person {
+export interface person {
     name: string //name property
     gender: gender;// gender property
     birthdate?: Date; // optional birthdate property
 	age?: number; //optional age property
 }
 
-interface credentials {
+export interface credentials {
     username:string; //username property for the system
     pwd:string; //private property (password)
     email:string; //email for the system
 }
 
-interface sportyman extends person,credentials { //inhere
-    PreferedSports:Sports; // current preferred sports
+export interface sportyman extends person,credentials { //inhere
+    PreferedSports:Array<Sportmanprofile>; // current preferred sports
     agelevel:agelevel; //optional age level property
 	assignAgelevel: ageLevelAssignment; //method of function type contract to get agelevel
 }
 
-interface Rankedsportyman extends sportyman {
-        sportmanlevel:sportmanlevel;
-        ranking:number;
+export interface valorization {
+    reliability:valorizationvalues;
+    punctuality:valorizationvalues;
 }
 
-class sportman implements sportyman {
+export enum valorizationvalues {notdefined=0,low,medium,high,excellent};
+
+export class Sportman implements sportyman {
     static minage:number=minageallowed; //static property only class visible
     static maxage:number=maxageallowed;//static property only class visible
     private _id:number; //private property (unique number id)
@@ -96,12 +99,13 @@ class sportman implements sportyman {
     gender:gender; // public property (enum type)
     private _age:number; //private property
     agelevel:agelevel;
-    PreferedSports:Sports; // public property (array)
+    PreferedSports:Array<Sportmanprofile>; // public property (array)
+    valorization:valorization={reliability:0,punctuality:0};
     
     AddSports(Sportname: string, ...restOfName: Sports[]) {
 	return Sportname + " " + restOfName.join(" ");
 }
-    constructor(public name: string=defaultName,gender:gender=defaultgender,age?:number) { 
+    constructor(public name: string,gender:gender=defaultgender,age?:number) { 
      // public mandatory property 'name' define in the constructor
     // gender property with default value define in the constructor
            
@@ -129,7 +133,7 @@ class sportman implements sportyman {
     set age(newage:number) {
         if (newage === undefined ) {return};
         if (isNaN(newage)) {throw 'age: not numeric value'};
-        if (newage >= sportman.minage && newage <= sportman.maxage) {
+        if (newage >= Sportman.minage && newage <= Sportman.maxage) {
             this._age=newage;
             this.agelevel= this.assignAgelevel(this.gender,newage);
         } else {warnmsg()}
@@ -156,39 +160,109 @@ class sportman implements sportyman {
 	
 };
 
-function CreateSportman(newname: string, newgender:gender,newage?:number):any
-{
-    var sportguy: sportman = new  sportman(newname,newgender,newage);
-    return sportguy;
+// sport interfaces & classes.
+export enum sporttypes { faceoff = 1, share };
+export enum sportnumbertypes { individual = 1, group };
+export enum sportstatus { active = 1, inactive, blocked, future };
+
+export interface SportConfig {
+	name: string;
+	iconname: string;
+	status: sportstatus;
+	type: sporttypes;
+	numbertype: sportnumbertypes;
+}
+
+export class Sport implements SportConfig {
+	name: string;
+	iconname: string;
+	status: sportstatus;
+	type: sporttypes;
+	numbertype: sportnumbertypes;
+
+	constructor(sportname:string) {
+		this.name = sportname;
+/*		this.iconname = sport.iconname;
+		this.status = sport.status;
+		this.type = sport.type;
+		this.numbertype = sport.numbertype;
+        */
+	}
+
+};
+
+// sportprofiles interfaces & classes.
+export enum sportmanlevel{beginner = 10,basic=20,intermediate=30,advance=40,expert=50}; // set of numeric values with names for each value, set all values
+
+export interface Iperformance {
+	points:number;
+    games:number;
+    wins:number;
+    lose:number;
+    draw:number;
+}
+export interface Rankedsportyman  {
+        sportman:Sportman;
+        sport:Sport;
+        level:sportmanlevel;
+	    ranking: number;
+        rankedperformance:Iperformance;
+        friendlyperformance:Iperformance;
+        }
+
+
+
+export class Sportmanprofile implements Rankedsportyman {
+        sportman:Sportman;
+        sport:Sport;
+        level:sportmanlevel=sportmanlevel.basic;
+	    ranking: number=0;
+        rankedperformance:Iperformance;
+        friendlyperformance:Iperformance;
+        
+        constructor (sportman:Sportman,sport:Sport) {
+                this.sportman= sportman;
+                this.sport = sport;
+                this.rankedperformance={ points:0, games:0, wins:0,lose:0,draw:0};
+                this.friendlyperformance={ points:0, games:0, wins:0,lose:0,draw:0};
+        }
+
+        getsportmanlevelname(){
+            return    sportmanlevel[this.level]; 
+        }
+  
+ }
+
+    class Factory {
+        
+      CreateSportman(sportmanName: string, newgender?:gender,newage?:number):any
+        {
+            var sportguy: Sportman = new  Sportman(sportmanName,newgender,newage);
+            return sportguy;
+        }
+        
+       CreateSport(sportName: string):any
+        {
+            var sport: Sport = new Sport(sportName);
+            return sport;
+        }
+        
+        CreateSportProfile(sportmanName: string,sportName:string):any
+        {       
+            var sportman:Sportman;
+            var sport:Sport;
+            
+            sportman= new Sportman(sportmanName);
+            sport = new Sport(sportName);
+            
+            var sportprofile: Sportmanprofile = new Sportmanprofile(sportman,sport);
+            
+            return sportprofile;
+        }       
         
 }
 
-function Testobjects() {
-    var obj1,obj2: sportman;
-    var s:string;
-    var b:boolean;
+export var funsportyFactory:Factory=new Factory();
 
 
 
-    obj1=CreateSportman (
-        'ANA',
-        gender.female,15
-        );
-    s= obj1.getAgelevelname();
-    s= obj1.getGendername();    
-
-        
-    b= obj1 instanceof sportman // operator to check prototype   
-    b =  'age' in obj1; //operator check property in a instantiated object
-
-    obj2=   CreateSportman (
-        'JORGE',
-        gender.male,
-        14
-        );
-        
-}
-
-import {testValidation} from './externalmodule'; // use ECMA6
-testValidation();
-Testobjects();

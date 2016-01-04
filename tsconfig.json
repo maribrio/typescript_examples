@@ -5,6 +5,7 @@
         "sourceMap": true
     },
     "files": [
+        "./basic/testobjects.ts",
         "basic/interfaces-classes.ts",
         "basic/internalmodule.ts",
         "basic/generic.ts"

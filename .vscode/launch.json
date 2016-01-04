@@ -2,10 +2,10 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch type script",
+			"name": "Launch testobjects with node",
 			"type": "node",
 			"request": "launch",
-			"program": "./basic/interfaces-classes.ts",
+			"program": "./basic/testobjects.ts",
 			"stopOnEntry": false,
 			"args": [],
 			"cwd": ".",
@@ -25,6 +25,28 @@
 			"type": "node",
 			"request": "attach",
 			"port": 5858
-		}
+		},
+        {
+            "name": "Launch testscript.html with chrome",
+            "type": "chrome",
+            "request": "launch",
+            "file": "basic/testscript.html",
+             "sourceMaps": true
+         },
+   /*     {
+            "name": "Launch localhost with sourcemaps",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost/testscript.html",
+            "webRoot": "./basic",
+            "sourceMaps": true
+        },*/
+          {
+            "name": "Attach to url with files served from ./out",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "webRoot": "./basic"
+        }
 	]
 }
