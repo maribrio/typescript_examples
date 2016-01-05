@@ -42,12 +42,22 @@ var defaultgender = gender.male; //assign default value from gender enum
 var anyvalue; //any type variable (anyvalue = '' or anyvalue = 10,etc)
 function warnmsg() { alert('data not allowed'); }
 ; // void type for non-return functions
+(function (evaluationvalues) {
+    evaluationvalues[evaluationvalues["notdefined"] = 0] = "notdefined";
+    evaluationvalues[evaluationvalues["low"] = 1] = "low";
+    evaluationvalues[evaluationvalues["medium"] = 2] = "medium";
+    evaluationvalues[evaluationvalues["high"] = 3] = "high";
+    evaluationvalues[evaluationvalues["excellent"] = 4] = "excellent";
+})(exports.evaluationvalues || (exports.evaluationvalues = {}));
+var evaluationvalues = exports.evaluationvalues;
+;
 var Sportman = (function () {
-    function Sportman(name, gender, age) {
+    function Sportman(name, gender, birthdate) {
         // public mandatory property 'name' define in the constructor
         // gender property with default value define in the constructor
         if (gender === void 0) { gender = defaultgender; }
         this.name = name;
+        this.evaluation = { reliability: 0, punctuality: 0 };
         if (name == "") {
             this.name = defaultName;
         }
@@ -61,13 +71,13 @@ var Sportman = (function () {
         }
         this.gender = gender;
         //ways to check optional parameters
-        if (typeof age === 'undefined') {
+        if (typeof birthdate === 'undefined') {
             return;
         } //use typeof operator to check type, return string type
-        if (!(age === undefined)) {
-            this.age = age;
+        if (!(birthdate === undefined)) {
+            this.birthdate = birthdate;
         }
-        if (age === void 0) {
+        if (birthdate === void 0) {
         }
     }
     Sportman.prototype.AddSports = function (Sportname) {
@@ -88,40 +98,51 @@ var Sportman = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Sportman.prototype, "age", {
-        get: function () { return this._age; },
-        set: function (newage) {
-            if (newage === undefined) {
+    Object.defineProperty(Sportman.prototype, "birthdate", {
+        set: function (birthdate) {
+            if (birthdate === undefined) {
                 return;
             }
             ;
-            if (isNaN(newage)) {
-                throw 'age: not numeric value';
-            }
-            ;
-            if (newage >= Sportman.minage && newage <= Sportman.maxage) {
-                this._age = newage;
-                this.agelevel = this.assignAgelevel(this.gender, newage);
-            }
-            else {
+            this._birthdate = birthdate;
+            var age = this.age;
+            if (!(age >= Sportman.minage && age <= Sportman.maxage)) {
                 warnmsg();
             }
         },
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Sportman.prototype, "age", {
+        get: function () {
+            var today = new Date();
+            var birthday = this._birthdate;
+            var years = today.getFullYear() - this._birthdate.getFullYear();
+            // Reset birthday to the current year.
+            var y1 = birthday.getFullYear();
+            var y2 = today.getFullYear();
+            // If the user's birthday has not occurred yet this year, subtract 1.
+            if (y2 < y1) {
+                years--;
+            }
+            return years;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Sportman.prototype.getAgelevelname = function () {
-        return agelevel[this.agelevel];
+        return agelevel[this.getAgelevel()];
     };
     Sportman.prototype.getGendername = function () {
         return gender[this.gender];
     };
-    Sportman.prototype.assignAgelevel = function (genderparam, ageparam) {
+    Sportman.prototype.getAgelevel = function () {
         var result;
-        if (ageparam) {
-            result = genderparam == gender.male ?
-                (ageparam <= 15 ? agelevel.child : agelevel.adult)
-                : (ageparam <= 18 ? agelevel.child : agelevel.adult);
+        var age = this.age;
+        if (age) {
+            result = this.gender == gender.male ?
+                (age <= 15 ? agelevel.child : agelevel.adult)
+                : (age <= 18 ? agelevel.child : agelevel.adult);
         }
         else {
             result = agelevel.noespecified;
@@ -184,8 +205,8 @@ var Sportmanprofile = (function () {
         this.ranking = 0;
         this.sportman = sportman;
         this.sport = sport;
-        this.rankedperformance = { points: 0, games: 0, wins: 0, lose: 0, draw: 0 };
-        this.friendlyperformance = { points: 0, games: 0, wins: 0, lose: 0, draw: 0 };
+        this.rankedperformance = { points: 0, games: 0, won: 0, lost: 0, drawn: 0 };
+        this.friendlyperformance = { points: 0, games: 0, won: 0, lost: 0, drawn: 0 };
     }
     Sportmanprofile.prototype.getsportmanlevelname = function () {
         return sportmanlevel[this.level];
@@ -196,8 +217,8 @@ exports.Sportmanprofile = Sportmanprofile;
 var Factory = (function () {
     function Factory() {
     }
-    Factory.prototype.CreateSportman = function (sportmanName, newgender, newage) {
-        var sportguy = new Sportman(sportmanName, newgender, newage);
+    Factory.prototype.CreateSportman = function (sportmanName, newgender, birthdate) {
+        var sportguy = new Sportman(sportmanName, newgender, birthdate);
         return sportguy;
     };
     Factory.prototype.CreateSport = function (sportName) {

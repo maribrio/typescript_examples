@@ -4,9 +4,16 @@ function Testobjects() {
     var smp;
     var s;
     var sm;
-    sm = interfaces_classes_1.funsportyFactory.CreateSportman('ALEXIS', funsporty.gender.male, 25);
+    var d = new Date(1985, 1, 12);
+    sm = interfaces_classes_1.funsportyFactory.CreateSportman('ALEXIS', funsporty.gender.male, d);
+    sm.PreferedSports = ['soccer', 'tennis'];
     console.log(' Sportman object:' + JSON.stringify(sm));
+    console.log(' años ' + sm.age);
     s = interfaces_classes_1.funsportyFactory.CreateSport('soccer');
+    s.iconname = "icon";
+    s.numbertype = funsporty.sportnumbertypes.individual;
+    s.status = funsporty.sportstatus.active;
+    s.type = funsporty.sporttypes.faceoff;
     console.log(' Sport object:' + JSON.stringify(s));
     smp = interfaces_classes_1.funsportyFactory.CreateSportProfile("ALEXIS", "SOCCER");
     console.log(' Sportmanprofile object:' + JSON.stringify(smp));
