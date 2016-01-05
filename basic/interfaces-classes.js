@@ -51,6 +51,66 @@ function warnmsg() { alert('data not allowed'); }
 })(exports.evaluationvalues || (exports.evaluationvalues = {}));
 var evaluationvalues = exports.evaluationvalues;
 ;
+(function (calendarstatus) {
+    calendarstatus[calendarstatus["available"] = 0] = "available";
+    calendarstatus[calendarstatus["busy"] = 1] = "busy";
+    calendarstatus[calendarstatus["engaged"] = 2] = "engaged";
+    calendarstatus[calendarstatus["notdefined"] = 3] = "notdefined";
+})(exports.calendarstatus || (exports.calendarstatus = {}));
+var calendarstatus = exports.calendarstatus;
+;
+var daystatus = (function () {
+    function daystatus() {
+        this.status = calendarstatus.available;
+        this.from = '09:00';
+        this.to = '21:00';
+    }
+    return daystatus;
+})();
+exports.daystatus = daystatus;
+;
+var Zone = (function () {
+    function Zone(city, country) {
+        this.city = city;
+        this.country = country;
+    }
+    return Zone;
+})();
+exports.Zone = Zone;
+;
+var weekdayrange = (function () {
+    function weekdayrange() {
+        this.mon = new daystatus;
+        this.tue = new daystatus;
+        this.wen = new daystatus;
+        this.thu = new daystatus;
+        this.fri = new daystatus;
+        this.sat = new daystatus;
+        this.sun = new daystatus;
+    }
+    return weekdayrange;
+})();
+exports.weekdayrange = weekdayrange;
+var Calendar = (function () {
+    function Calendar() {
+        this.since = new Date();
+        this.to = new Date(2099, 12, 31);
+        this.weekdays = new weekdayrange;
+        this.status = calendarstatus.available;
+    }
+    return Calendar;
+})();
+exports.Calendar = Calendar;
+;
+var ZoneConfig = (function () {
+    function ZoneConfig(zone, calendar) {
+        this.zones = [];
+        this.zones[0] = zone;
+        this.calendar = calendar;
+    }
+    return ZoneConfig;
+})();
+exports.ZoneConfig = ZoneConfig;
 var Sportman = (function () {
     function Sportman(name, gender, birthdate) {
         // public mandatory property 'name' define in the constructor
@@ -58,6 +118,7 @@ var Sportman = (function () {
         if (gender === void 0) { gender = defaultgender; }
         this.name = name;
         this.evaluation = { reliability: 0, punctuality: 0 };
+        this.status = sportstatus.active;
         if (name == "") {
             this.name = defaultName;
         }
@@ -178,6 +239,9 @@ var sportstatus = exports.sportstatus;
 ;
 var Sport = (function () {
     function Sport(sportname) {
+        this.status = sportstatus.active;
+        this.type = sporttypes.faceoff;
+        this.numbertype = sportnumbertypes.individual;
         this.name = sportname;
         /*		this.iconname = sport.iconname;
                 this.status = sport.status;

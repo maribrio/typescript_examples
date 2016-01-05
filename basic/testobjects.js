@@ -7,6 +7,7 @@ function Testobjects() {
     var d = new Date(1985, 1, 12);
     sm = interfaces_classes_1.funsportyFactory.CreateSportman('ALEXIS', funsporty.gender.male, d);
     sm.PreferedSports = ['soccer', 'tennis'];
+    sm.zone = new funsporty.ZoneConfig(new funsporty.Zone('providencia', 'Chile'), new funsporty.Calendar());
     console.log(' Sportman object:' + JSON.stringify(sm));
     console.log(' años ' + sm.age);
     s = interfaces_classes_1.funsportyFactory.CreateSport('soccer');

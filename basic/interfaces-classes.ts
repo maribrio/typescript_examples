@@ -89,6 +89,51 @@ export interface Evaluation {
 
 export enum evaluationvalues {notdefined=0,low,medium,high,excellent};
 
+export enum calendarstatus {available,busy,engaged,notdefined};
+
+export class daystatus {
+  status:calendarstatus=calendarstatus.available;
+  from:string='09:00';
+  to:string='21:00';
+};
+
+export class Zone 
+{sector:string;loc:string;city:string;country:string
+    
+    constructor(city:string,country:string){
+        this.city=city;
+        this.country=country;
+    }
+    };
+
+export class weekdayrange {
+    mon:daystatus=new daystatus;
+    tue:daystatus=new daystatus;
+    wen:daystatus=new daystatus;
+    thu:daystatus=new daystatus;
+    fri:daystatus=new daystatus;
+    sat:daystatus=new daystatus;
+    sun:daystatus=new daystatus;
+}
+
+export class Calendar {
+  since:Date=new Date();
+  to:Date= new Date(2099,12,31);
+  weekdays: weekdayrange=new weekdayrange;
+  status:calendarstatus=calendarstatus.available;
+  };
+
+export class ZoneConfig {
+    zones:Zone[]=[];
+    calendar:Calendar;
+    constructor(zone:Zone,calendar:Calendar){
+        this.zones[0] = zone;
+        this.calendar= calendar
+     }
+        
+}
+
+
 export class Sportman implements sportyman {
     static minage:number=minageallowed; //static property only class visible
     static maxage:number=maxageallowed;//static property only class visible
@@ -98,7 +143,8 @@ export class Sportman implements sportyman {
     private _birthdate:Date;
     PreferedSports:Array<string>; // public property (array)
     evaluation:Evaluation={reliability:0,punctuality:0};
-    status:sportstatus;
+    status:sportstatus=sportstatus.active;
+    zone: ZoneConfig;
     
     AddSports(Sportname: string, ...restOfName: Sports[]) {
 	return Sportname + " " + restOfName.join(" ");
@@ -196,9 +242,9 @@ export interface SportConfig {
 export class Sport implements SportConfig {
 	name: string;
 	iconname: string;
-	status: sportstatus;
-	type: sporttypes;
-	numbertype: sportnumbertypes;
+	status: sportstatus=sportstatus.active;
+	type: sporttypes=sporttypes.faceoff;
+	numbertype: sportnumbertypes=sportnumbertypes.individual;
 
 	constructor(sportname:string) {
 		this.name = sportname;
