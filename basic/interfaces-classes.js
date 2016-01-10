@@ -11,6 +11,11 @@ String
 Symbol (new in ECMAScript 6)
 
 */
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var externalmodule_1 = require('./externalmodule'); // use ECMA6
 //example to import ambient declare files
 ///<reference path="./declare.dt.ts"/>
@@ -69,8 +74,22 @@ var daystatus = (function () {
 })();
 exports.daystatus = daystatus;
 ;
+var Match = (function (_super) {
+    __extends(Match, _super);
+    function Match(date, rival, sport) {
+        _super.call(this);
+        this.date = date;
+        this.rival = rival;
+        this.sport = sport;
+        this.status = calendarstatus.engaged;
+    }
+    return Match;
+})(daystatus);
+exports.Match = Match;
 var Zone = (function () {
     function Zone(city, country) {
+        this.sector = "";
+        this.loc = "";
         this.city = city;
         this.country = country;
     }
@@ -112,19 +131,28 @@ var ZoneConfig = (function () {
 })();
 exports.ZoneConfig = ZoneConfig;
 var Sportman = (function () {
-    function Sportman(name, gender, birthdate) {
+    function Sportman(username, gender, birthdate) {
         // public mandatory property 'name' define in the constructor
         // gender property with default value define in the constructor
         if (gender === void 0) { gender = defaultgender; }
-        this.name = name;
+        this.username = username;
+        this._id = -1; //private property (unique number id)
+        this.user_id = -1; // user id property
+        this.preferedsports = []; // public property (array)
+        this.sportprofiles = [];
         this.evaluation = { reliability: 0, punctuality: 0 };
         this.status = sportstatus.active;
-        if (name == "") {
-            this.name = defaultName;
+        this.Matches = [];
+        this.img = "";
+        this.names = { firstname: '', surname: '' };
+        this.alias = '';
+        this.email = '';
+        if (username == "") {
+            this.username = defaultName;
         }
         else {
-            if (externalmodule_1.validators['Letters only'].isAcceptable(name)) {
-                this.name = name;
+            if (externalmodule_1.validators['Letters only'].isAcceptable(username)) {
+                this.alias = username;
             }
             else {
                 throw 'value name not allowed';
@@ -238,11 +266,12 @@ var sportnumbertypes = exports.sportnumbertypes;
 var sportstatus = exports.sportstatus;
 ;
 var Sport = (function () {
-    function Sport(sportname) {
+    function Sport(name) {
+        this.iconname = "";
         this.status = sportstatus.active;
         this.type = sporttypes.faceoff;
         this.numbertype = sportnumbertypes.individual;
-        this.name = sportname;
+        this.name = name;
         /*		this.iconname = sport.iconname;
                 this.status = sport.status;
                 this.type = sport.type;
@@ -272,7 +301,7 @@ var Sportmanprofile = (function () {
         this.rankedperformance = { points: 0, games: 0, won: 0, lost: 0, drawn: 0 };
         this.friendlyperformance = { points: 0, games: 0, won: 0, lost: 0, drawn: 0 };
     }
-    Sportmanprofile.prototype.getsportmanlevelname = function () {
+    Sportmanprofile.prototype.getlevelname = function () {
         return sportmanlevel[this.level];
     };
     return Sportmanprofile;

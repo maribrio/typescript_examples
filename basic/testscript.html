@@ -1,6 +1,11 @@
 <head>
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8"> 
 <script type="text/javascript" src="interfaces-classes.js"> </script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script> 
 var n=0;
 function Test() {
@@ -38,21 +43,433 @@ function Test() {
 </script>
 </head>
 <body>
-    <h1> TEST OBJECTS IN TYPESCRIPT </h1>
-    <label> name </label>  
-    <input id="name" type ="text" required placeholder="write name"> </input>
-    <label> gender </label>  
-    <select id="gender">
-        <option value="1" name = "Male">Male</option>
-        <option value="2" name = "Female">Female</option>
-    </select>
-    <label> age </label>  
-    <input id="age" type ="number" min="1" max="80" value="5" > </input>
-    <button onclick="Test()"> test </button>
-    <div>
-    parameters: <span id="param"> </span> <br>
-    result: <p id="result"> </p>
-    errors: <p id="error"> </p>
-    tries: <p id="nro"> </p>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Home</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Deportistas <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Estadisticas</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Deportes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="page-header">
+  <h1>FUNSPORTY <small>Encuentra personas para practicar tu deporte</small></h1>
+</div>    
+  
+    
+<div class="jumbotron">
+    <h1>Puedes buscar tus rivales para practicar el deporte que desees!</h1>
+    <p>funsporty te permite buscar rivales para jugar, competir y divertirse...</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">leer acerca de ...</a></p>
+</div>
+    
+<blockquote>
+  <p>una manera de hacer conocer nuevos amigos en los deportes que practicas </p>
+  <footer> Luis Abarca <cite title="Source Title">El deporte rey</cite></footer>
+</blockquote>
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    Cras justo odio
+  </a>
+  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item">Morbi leo risus</a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+</div>
+<div class="list-group">
+  <button type="button" class="list-group-item">Cras justo odio</button>
+  <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+</div>
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">La mejor forma de buscar</h4>
+    <p class="list-group-item-text">encuentra las personas cercanas y de acuerdo a tu perfil</p>
+  </a>
+</div>
+
+<ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="#"> Buscar rivales </a></li>
+    <li role="presentation"><a href="#">Perfil</a></li>
+    <li role="presentation"><a href="#">Ranking</a></li>
+    <li role="presentation"><a href="#">mensajes <span class="badge">3</span></a></li>
+</ul>
+        
+
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                </span>
+                <input type="text" class="form-control" placeholder="Search for...">
+             </div><!-- /input-group -->
+         </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->    
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+    <div class="panel-heading">
+        <h3 class="panel-title"> Deportistas que coinciden con tus preferencias</h3>
+    </div>
+   
+    <div class="panel-body">
+        
+    <div class="btn-group btn-group-justified" role="group" aria-label="..." name ="sports">
+        <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" (click) = "onSportChanged('tennis')">Tenis</button>
+        </div>
+        <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" (click) = "onSportChanged('soccer')">Futbol</button>
+        </div>
+        <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" (click) = "onSportChanged('bike')">Bicicleta</button>
+        </div>
+        <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" (click) = "onSportChanged('running')">Running</button>
+        </div>
+        <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" (click) = "onSportChanged('trekking')">Trekking</button>
+        </div>
+        <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" (click) = "onSportChanged('hiking')">Hiking</button>
+        </div>
+        <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" (click) = "onSportChanged('swimming')">Natacion</button>
+        </div>
+        <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" (click) = "onSportChanged('basketball')">Basquetball</button>
+        </div>
+        <div class="btn-group" role="group" name="othersports">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Otros Deportes
+            <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" name="othersportlist">
+            <li><a href="#">Ping-Pong</a></li>
+            <li><a href="#">Volleybol</a></li>
+            </ul>
+        </div>
+    </div>        
+        
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                <div class="btn-group" role="group" aria-label="Ordenar">
+                    <button type="button" class="btn btn-default" (click) = "onGenderChanged(1)">Hombre</button>
+                    <button type="button" class="btn btn-default" (click) = "onGenderChanged(2)">Mujer</button>
+                    
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categoría Edad
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                        	<li (click) = "onAgelevelChanged(null)"><a href="#">Todos</a></li>
+                            <li (click) = "onAgelevelChanged(10)"><a href="#">joven</a></li>
+                            <li (click) = "onAgelevelChanged(20)"><a href="#">Adulto</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Nivel
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                        	<li (click) = "onLevelChanged(null)"><a href="#">Todos</a></li>
+                            <li (click) = "onLevelChanged(10)"><a href="#">Principiante</a></li>
+                            <li (click) = "onLevelChanged(20)"><a href="#">Básico</a></li>
+                            <li (click) = "onLevelChanged(30)"><a href="#">Intermedio</a></li>
+                            <li (click) = "onLevelChanged(40)"><a href="#">Avanzado</a></li>
+                            <li (click) = "onLevelChanged(50)"><a href="#">Experto</a></li>
+                        </ul>
+                    </div>
+
+	                </div>
+	                 <!-- Single button -->
+	                 <div class="btn-group" role="group">
+	                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                    Ordenar <span class="caret"></span>
+	                </button>
+		                <ul class="dropdown-menu">
+		                    <li><a href="#">Valorización</a></li>
+		                    <li><a href="#">Ranking</a></li>
+		                    <li><a href="#">Zona</a></li>
+		                    <li role="separator" class="divider"></li>
+		                    <li><a href="#">Edad</a></li>
+		                </ul>
+	                </div>
+                
+                
+            </div>
+            <div class="btn-group" role="group" aria-label="..."></div>
+            <div class="btn-group" role="group" aria-label="..."></div>
+         
+            
+        </div>
+    </div>  
+</div>
+
+  
+   
+    
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="https://raisingbyexample.files.wordpress.com/2015/06/active.jpg" class="img-circle"" alt="...">
+            <div class="caption">
+                <h3>Erika Cifuentes</h3>
+                <h4><spa name="city">Santiago</spa>,<spa name="country">Chile</spa></h4>
+                <ul class="list-inline" name ="sports">
+                    <li><span class="label label-info">Tenis</span></li>
+                    <li><span class="label label-info">Running</span></li>
+                </ul>
+                <div class="progress" name="performance" id ="performance">
+                    <div class="progress-bar progress-bar-success" style="width: 35%">
+                        <span class="sr-only">35% Complete (won)</span>
+                    </div>
+                    <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
+                        <span class="sr-only">20% Complete (drawn)</span>
+                    </div>
+                    <div class="progress-bar progress-bar-danger" style="width: 10%">
+                        <span class="sr-only">10% Complete (lost)</span>
+                    </div>
+                </div>
+        
+                <ul class="list-group">
+                    <li class="list-group-item" id= "valuation" name ="valuation">
+                    <span class="badge">5</span> Calificación
+                    </li>
+                    <li class="list-group-item" id ="ranking" name ="ranking">
+                       
+                    Nivel  <span class="label label-success">Principiante</span>  <span class="label label-info">Tenis</span>
+                    <span class="badge">4</span>
+                    </li>
+                </ul>
+        
+                <p><a href="#" class="btn btn-primary" role="button" id ="invite" name = "invite">Invitar</a> 
+                    <a href="#" class="btn btn-default" role="button" id="profile" name ="profile">Ficha</a>
+                    <a href="#" class="btn btn-default" role="button" id = "calendar" name="calendar">Calendario</a>
+                </p>
+             </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+    <div class="panel-heading">
+        <h3 class="panel-title">Estadisticas</h3>
+    </div>
+    <div class="panel-body">
+  <!-- Table -->
+        <table class="table-condensed">
+                <tr><td>#</td><td>nombre</td><td>deporte</td><td>nivel</td><td>puntos</td><td>encuentros</td><td>ganados</td><td>empatados</td><td>perdidos</td></tr>
+                <tr><td>1</td> <td>Erika Cifuentes</td><td>Tenis</td><td>avanzado</td><td>12</td><td>6</td><td>5</td><td>1</td><td>0</td></tr>
+        </table>
+        <ul class="list-group">
+            <li class="list-group-item">Encuentros</li>
+            <li class="list-group-item">Anulaciones</li>
+            <li class="list-group-item">Sin evaluacion</li>
+            <li class="list-group-item">Reclamos</li>
+            <li class="list-group-item">Observaciones</li>
+        </ul>
+    </div> 
+</div>    
+    
+    
+<form>
+    <div class="form-group">
+        <label for="gender">Género</label>
+        <select class="form-control" name = "gender" id="gender">
+            <option>Hombre</option>
+            <option>Mujer</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" class="form-control" name ="name" id="name" placeholder="Jane Doe" required>
+        <span id="helpBlock" class="help-block"> nombre a publicar en su perfil.</span>
+    </div>
+    
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" name = "Email" id="Email" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="birthdate">Fecha de nacimiento</label>
+        <input type="datetime" class="form-control" name="birthdate" id="birthdate" placeholder="fecha">
+    </div>
+  
+    <div class="form-group">
+        <label for="city">Ciudad</label>
+        <input type="text" class="form-control" name="city" id="city" placeholder="Jane Doe">
+    </div>
+    <div class="form-group">
+        <label for="country">Pais</label>
+        <select class="form-control" name="country" id="country">
+            <option>Alemania</option>
+            <option>Argentina</option>
+            <option>Chile</option>
+            <option>USA</option>
+            <option>Peru</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleInputFile">foto</label>
+        <input type="file" id="photo" name ="photo">
+        <p class="help-block">seleccione fotografia</p>
+    </div>
+    
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                    Tenis
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                    Futbol
+            </label>
+                <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                    Running
+            </label>
+        </div>
+    </div>
+    
+    <div class="form-group">  
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                    recibir notificaciones para encuentros
+            </label>
+        </div>
+        <div class="checkbox disabled">
+            <label>
+                <input type="checkbox" value="" disabled>
+                    publicar calendario
+            </label>
+        </div>
+    </div>
+  
+  
+  <button type="submit" class="btn btn-default">Submit</button>
+  
+</form>
+<ul class="media-list">
+  <li class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="http://www.softicons.com/social-media-icons/simple-icons-by-dan-leech/facebook-icon" alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Media heading</h4>
+      este es un ejemplo
+    </div>
+  </li>
+</ul>
+
+ <address>
+  <strong>Twitter, Inc.</strong><br>
+  1355 Market Street, Suite 900<br>
+  San Francisco, CA 94103<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
+
+<address>
+  <strong>Full Name</strong><br>
+  <a href="mailto:#">first.last@example.com</a>
+</address>   
+
+<div class="container">
+  <h2>Modal Example</h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+    
 </body>

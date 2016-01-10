@@ -63,21 +63,26 @@ interface SportsIconName {
 	mainSport: string;
 }
 
+export interface PersonalNames {
+    firstname: string //name property
+    surname:string // surname property
+}
 export interface person {
-    name: string //name property
+    names?:PersonalNames;
     gender: gender;// gender property
     birthdate?: Date; // optional birthdate property
 	age?: number; //optional age property
+    email?:string; //email for the system
 }
 
 export interface credentials {
+    alias?:string;// alias for the app
+    user_id:number;// user id for the system
     username:string; //username property for the system
-    pwd:string; //private property (password)
-    email:string; //email for the system
 }
 
-export interface sportyman extends person { //inhere
-    PreferedSports:Array<string>; // current preferred sports
+export interface sportyman extends person,credentials { //inhere
+    preferedsports:Array<string>; // current preferred sports
     getAgelevel:()=>agelevel; //optional age level property
 	//assignAgelevel: ageLevelAssignment; //method of function type contract to get agelevel
 }
@@ -86,6 +91,7 @@ export interface Evaluation {
     reliability:evaluationvalues;
     punctuality:evaluationvalues;
 }
+
 
 export enum evaluationvalues {notdefined=0,low,medium,high,excellent};
 
@@ -97,8 +103,18 @@ export class daystatus {
   to:string='21:00';
 };
 
+export class Match extends daystatus {
+    
+    status=calendarstatus.engaged;
+    
+    constructor(public date:Date, public rival:Sportman,public sport:Sport){
+        super()
+    }
+}
+
+
 export class Zone 
-{sector:string;loc:string;city:string;country:string
+{sector:string="";loc:string="";city:string;country:string
     
     constructor(city:string,country:string){
         this.city=city;
@@ -133,29 +149,34 @@ export class ZoneConfig {
         
 }
 
-
 export class Sportman implements sportyman {
     static minage:number=minageallowed; //static property only class visible
     static maxage:number=maxageallowed;//static property only class visible
-    private _id:number; //private property (unique number id)
-    user_id:number; // user id property
+    private _id:number=-1; //private property (unique number id)
+    user_id:number=-1; // user id property
     gender:gender; // public property (enum type)
     private _birthdate:Date;
-    PreferedSports:Array<string>; // public property (array)
+    preferedsports:Array<string>=[]; // public property (array)
+    sportprofiles:Array<Sportmanprofile>=[];
     evaluation:Evaluation={reliability:0,punctuality:0};
     status:sportstatus=sportstatus.active;
-    zone: ZoneConfig;
-    
+    zoneconfig: ZoneConfig;
+    Matches: Array<Match>=[];
+    img:string="";
+    names:PersonalNames={firstname:'',surname:''};
+    alias:string='';
+    email:string='';
+        
     AddSports(Sportname: string, ...restOfName: Sports[]) {
 	return Sportname + " " + restOfName.join(" ");
 }
-    constructor(public name: string,gender:gender=defaultgender,birthdate?:Date) { 
+    constructor(public username: string,gender:gender=defaultgender,birthdate?:Date) { 
      // public mandatory property 'name' define in the constructor
     // gender property with default value define in the constructor
-           
-            if (name == "") {this.name = defaultName;}
+          
+            if (username == "") {this.username = defaultName;}
             else {
-                 if (validators['Letters only'].isAcceptable(name)) {this.name= name;}
+                 if (validators['Letters only'].isAcceptable(username)) {this.alias= username;}
                  else {throw 'value name not allowed'}
             }
             
@@ -241,13 +262,13 @@ export interface SportConfig {
 
 export class Sport implements SportConfig {
 	name: string;
-	iconname: string;
+	iconname: string="";
 	status: sportstatus=sportstatus.active;
 	type: sporttypes=sporttypes.faceoff;
 	numbertype: sportnumbertypes=sportnumbertypes.individual;
 
-	constructor(sportname:string) {
-		this.name = sportname;
+	constructor(name:string) {
+		this.name = name;
 /*		this.iconname = sport.iconname;
 		this.status = sport.status;
 		this.type = sport.type;
@@ -285,6 +306,7 @@ export class Sportmanprofile implements Rankedsportyman {
 	    ranking: number=0;
         rankedperformance:Iperformance;
         friendlyperformance:Iperformance;
+      
         
         constructor (sportman:Sportman,sport:Sport) {
                 this.sportman= sportman;
@@ -293,7 +315,7 @@ export class Sportmanprofile implements Rankedsportyman {
                 this.friendlyperformance={ points:0, games:0, won:0,lost:0,drawn:0};
         }
 
-        getsportmanlevelname(){
+        getlevelname(){
             return    sportmanlevel[this.level]; 
         }
   
