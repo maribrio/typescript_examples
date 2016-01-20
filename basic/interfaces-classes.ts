@@ -24,6 +24,7 @@ import {validators} from './externalmodule'; // use ECMA6
 //example to import ambient declare files
 ///<reference path="./declare.dt.ts"/>
 import url = require("url");
+
 var myUrl = url.parse("http://www.typescriptlang.org");  
 
 //declare variables
@@ -159,7 +160,7 @@ export class Sportman implements sportyman {
     preferedsports:Array<string>=[]; // public property (array)
     sportprofiles:Array<Sportmanprofile>=[];
     evaluation:Evaluation={reliability:0,punctuality:0};
-    status:sportstatus=sportstatus.active;
+    status:SportStatus=SportStatus.active;
     zoneconfig: ZoneConfig;
     Matches: Array<Match>=[];
     img:string="";
@@ -248,34 +249,60 @@ export class Sportman implements sportyman {
 };
 
 // sport interfaces & classes.
-export enum sporttypes { faceoff = 1, share };
-export enum sportnumbertypes { individual = 1, group };
-export enum sportstatus { active = 1, inactive, blocked, future };
+export enum SportTypes { faceoff = 1, share };
+export enum SportStatus { active = 1, inactive, blocked, future };
 
-export interface SportConfig {
+export interface ISport {
 	name: string;
-	iconname: string;
-	status: sportstatus;
-	type: sporttypes;
-	numbertype: sportnumbertypes;
+    type?: SportTypes;
+    status?: SportStatus;
+    images?: ImageRef;
+    allocation?:SportAllocation;
+    participants?:SportParticipants;
 }
 
-export class Sport implements SportConfig {
+export interface SportParticipants{
+    min:number;
+    max?:number;
+}
+
+export interface SportAllocation {
+    single:boolean;
+    group?:boolean;
+    collective?:boolean;
+}
+
+export interface ImageRef {
+  mobileicon: string,
+  webicon?:string,
+  banner?:string
+}
+
+export class Sport  {
 	name: string;
-	iconname: string="";
-	status: sportstatus=sportstatus.active;
-	type: sporttypes=sporttypes.faceoff;
-	numbertype: sportnumbertypes=sportnumbertypes.individual;
+    type: SportTypes=SportTypes.faceoff;
+	status: SportStatus=SportStatus.active;
+	images: ImageRef= {mobileicon:"",webicon:"",banner:""};
+    allocation:SportAllocation={single:true,group:false,collective:false};
+    participants: SportParticipants={min:1,max:1};
 
-	constructor(name:string) {
-		this.name = name;
-/*		this.iconname = sport.iconname;
-		this.status = sport.status;
-		this.type = sport.type;
-		this.numbertype = sport.numbertype;
-        */
+	constructor(sport:ISport) {
+		this.name = sport.name;
+        this.type = sport.type || this.type;
+        this.status = sport.status || this.status;
+		this.images = sport.images || this.images;
+        this.allocation=sport.allocation || this.allocation;
+        this.participants= sport.participants || this.participants;
 	}
-
+    
+    get statusname(){
+        return    SportStatus[this.status]; 
+    }
+    
+    get typename(){
+    return    SportTypes[this.type]; 
+    }
+    
 };
 
 // sportprofiles interfaces & classes.
@@ -329,21 +356,21 @@ export class Sportmanprofile implements Rankedsportyman {
             return sportguy;
         }
         
-       CreateSport(sportName: string):any
+       CreateSport(sport: ISport):any
         {
-            var sport: Sport = new Sport(sportName);
-            return sport;
+            var sportobject: Sport = new Sport(sport);
+            return sportobject;
         }
         
-        CreateSportProfile(sportmanName: string,sportName:string):any
+        CreateSportProfile(sportmanName: string,sport:ISport):any
         {       
             var sportman:Sportman;
-            var sport:Sport;
+            var sportobject:Sport;
             
             sportman= new Sportman(sportmanName);
-            sport = new Sport(sportName);
+            sportobject = new Sport(sport);
             
-            var sportprofile: Sportmanprofile = new Sportmanprofile(sportman,sport);
+            var sportprofile: Sportmanprofile = new Sportmanprofile(sportman,sportobject);
             
             return sportprofile;
         }       

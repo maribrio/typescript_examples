@@ -52,18 +52,8 @@ function Testobjects() {
     a = { gender: 1, sport: 'tennis', level: 10 };
     b = buildQuery(null, a);
     console.log(JSON.stringify(b));
-    if (a) {
-        console.log("jk");
-    }
-    else {
-        console.log("klk");
-    }
     // show sport object creation
-    s = interfaces_classes_1.funsportyFactory.CreateSport('tennis');
-    s.iconname = "icon";
-    s.numbertype = funsporty.sportnumbertypes.individual;
-    s.status = funsporty.sportstatus.active;
-    s.type = funsporty.sporttypes.faceoff;
+    s = interfaces_classes_1.funsportyFactory.CreateSport({ name: 'tennis', images: { mobileicon: "tennisball" } });
     console.log(' Sport object:' + JSON.stringify(s));
     // show sportman object creation
     sm = interfaces_classes_1.funsportyFactory.CreateSportman('ALEXIS', funsporty.gender.male, new Date(1985, 1, 12));
@@ -79,7 +69,7 @@ function Testobjects() {
     console.log(' Sportman object:' + JSON.stringify(sm));
     console.log(' años ' + sm.age);
     //  show sportprofile object creation
-    smp = interfaces_classes_1.funsportyFactory.CreateSportProfile("ALEXIS", "SOCCER");
+    smp = interfaces_classes_1.funsportyFactory.CreateSportProfile("ALEXIS", { name: "SOCCER" });
     console.log(' Sportmanprofile object:' + JSON.stringify(smp));
     console.log(sm.username + sm.getAgelevelname() + sm.getGendername());
     console.log(sm instanceof funsporty.Sportman); // operator to check prototype   

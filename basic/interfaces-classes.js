@@ -141,7 +141,7 @@ var Sportman = (function () {
         this.preferedsports = []; // public property (array)
         this.sportprofiles = [];
         this.evaluation = { reliability: 0, punctuality: 0 };
-        this.status = sportstatus.active;
+        this.status = SportStatus.active;
         this.Matches = [];
         this.img = "";
         this.names = { firstname: '', surname: '' };
@@ -245,39 +245,48 @@ var Sportman = (function () {
 exports.Sportman = Sportman;
 ;
 // sport interfaces & classes.
-(function (sporttypes) {
-    sporttypes[sporttypes["faceoff"] = 1] = "faceoff";
-    sporttypes[sporttypes["share"] = 2] = "share";
-})(exports.sporttypes || (exports.sporttypes = {}));
-var sporttypes = exports.sporttypes;
+(function (SportTypes) {
+    SportTypes[SportTypes["faceoff"] = 1] = "faceoff";
+    SportTypes[SportTypes["share"] = 2] = "share";
+})(exports.SportTypes || (exports.SportTypes = {}));
+var SportTypes = exports.SportTypes;
 ;
-(function (sportnumbertypes) {
-    sportnumbertypes[sportnumbertypes["individual"] = 1] = "individual";
-    sportnumbertypes[sportnumbertypes["group"] = 2] = "group";
-})(exports.sportnumbertypes || (exports.sportnumbertypes = {}));
-var sportnumbertypes = exports.sportnumbertypes;
-;
-(function (sportstatus) {
-    sportstatus[sportstatus["active"] = 1] = "active";
-    sportstatus[sportstatus["inactive"] = 2] = "inactive";
-    sportstatus[sportstatus["blocked"] = 3] = "blocked";
-    sportstatus[sportstatus["future"] = 4] = "future";
-})(exports.sportstatus || (exports.sportstatus = {}));
-var sportstatus = exports.sportstatus;
+(function (SportStatus) {
+    SportStatus[SportStatus["active"] = 1] = "active";
+    SportStatus[SportStatus["inactive"] = 2] = "inactive";
+    SportStatus[SportStatus["blocked"] = 3] = "blocked";
+    SportStatus[SportStatus["future"] = 4] = "future";
+})(exports.SportStatus || (exports.SportStatus = {}));
+var SportStatus = exports.SportStatus;
 ;
 var Sport = (function () {
-    function Sport(name) {
-        this.iconname = "";
-        this.status = sportstatus.active;
-        this.type = sporttypes.faceoff;
-        this.numbertype = sportnumbertypes.individual;
-        this.name = name;
-        /*		this.iconname = sport.iconname;
-                this.status = sport.status;
-                this.type = sport.type;
-                this.numbertype = sport.numbertype;
-                */
+    function Sport(sport) {
+        this.type = SportTypes.faceoff;
+        this.status = SportStatus.active;
+        this.images = { mobileicon: "", webicon: "", banner: "" };
+        this.allocation = { single: true, group: false, collective: false };
+        this.participants = { min: 1, max: 1 };
+        this.name = sport.name;
+        this.type = sport.type || this.type;
+        this.status = sport.status || this.status;
+        this.images = sport.images || this.images;
+        this.allocation = sport.allocation || this.allocation;
+        this.participants = sport.participants || this.participants;
     }
+    Object.defineProperty(Sport.prototype, "statusname", {
+        get: function () {
+            return SportStatus[this.status];
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Sport.prototype, "typename", {
+        get: function () {
+            return SportTypes[this.type];
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Sport;
 })();
 exports.Sport = Sport;
@@ -314,16 +323,16 @@ var Factory = (function () {
         var sportguy = new Sportman(sportmanName, newgender, birthdate);
         return sportguy;
     };
-    Factory.prototype.CreateSport = function (sportName) {
-        var sport = new Sport(sportName);
-        return sport;
+    Factory.prototype.CreateSport = function (sport) {
+        var sportobject = new Sport(sport);
+        return sportobject;
     };
-    Factory.prototype.CreateSportProfile = function (sportmanName, sportName) {
+    Factory.prototype.CreateSportProfile = function (sportmanName, sport) {
         var sportman;
-        var sport;
+        var sportobject;
         sportman = new Sportman(sportmanName);
-        sport = new Sport(sportName);
-        var sportprofile = new Sportmanprofile(sportman, sport);
+        sportobject = new Sport(sport);
+        var sportprofile = new Sportmanprofile(sportman, sportobject);
         return sportprofile;
     };
     return Factory;

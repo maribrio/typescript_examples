@@ -58,18 +58,10 @@ function Testobjects() {
     
     console.log(JSON.stringify(b));
     
-    if (a) {
-        console.log("jk");
-    } else {
-        console.log("klk");
-    }
     
     // show sport object creation
-    s= funsportyFactory.CreateSport('tennis');
-    s.iconname="icon";
-    s.numbertype= funsporty.sportnumbertypes.individual;
-    s.status=funsporty.sportstatus.active;
-    s.type=funsporty.sporttypes.faceoff;
+    s= funsportyFactory.CreateSport({name:'tennis',images:{mobileicon:"tennisball"}});
+    
     console.log(' Sport object:' + JSON.stringify(s));
     
      // show sportman object creation
@@ -90,7 +82,7 @@ function Testobjects() {
     console.log(' años ' + sm.age);
     
     //  show sportprofile object creation
-    smp=funsportyFactory.CreateSportProfile("ALEXIS","SOCCER")
+    smp=funsportyFactory.CreateSportProfile("ALEXIS",{name:"SOCCER"})
     
     console.log(' Sportmanprofile object:' + JSON.stringify(smp));
     
