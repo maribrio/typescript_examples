@@ -8,193 +8,197 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script> 
-var n=0;
-function Test() {
-    try {
-        var object;
-         
-        var x = document.getElementById("gender");
-        var i = x.selectedIndex;
-        x.options[i].text;
-        
-        document.getElementById("param").innerHTML =
-        document.getElementById('name').value + " " +
-        x.options[i].text + " " + 
-        document.getElementById('age').value
-        
-        object= CreateSportman (
-        document.getElementById('name').value,
-        document.getElementById('gender').value,
-        document.getElementById('age').value
-        );
-        document.getElementById("result").innerHTML =
-        "user <strong>" + object.name + "</strong> has <i>" + object.getGendername() + "</i> gender registered " + 
-        " and is <b>" + object.age + "</b> years old " + " with category level <b>" +
-         object.getAgelevelname() + "</b>";
-        }
-        
-    catch(err) {
-        document.getElementById("error").innerHTML = err.message;
-    }  
-    finally {
-        ++n;
-        document.getElementById("nro").innerHTML = n;
-    }
- }
+
 </script>
 </head>
 <body>
-             
-<div class="btn-group btn-group-justified" role="group" aria-label="..." name ="sports">
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" (click) = "onSportChanged('tennis')">Tenis</button>
-    </div>
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" (click) = "onSportChanged('soccer')">Futbol</button>
-    </div>
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" (click) = "onSportChanged('bike')">Bicicleta</button>
-    </div>
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" (click) = "onSportChanged('running')">Running</button>
-    </div>
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" (click) = "onSportChanged('trekking')">Trekking</button>
-    </div>
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" (click) = "onSportChanged('hiking')">Hiking</button>
-    </div>
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" (click) = "onSportChanged('swimming')">Natacion</button>
-    </div>
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" (click) = "onSportChanged('basketball')">Basquetball</button>
-    </div>
-    <div class="btn-group" role="group" name="othersports">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             Otros Deportes
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" name="othersportlist">
-            <li><a href="#">Ping-Pong</a></li>
-            <li><a href="#">Volleybol</a></li>
-        </ul>
-    </div>
-</div>       
 
-<div class="btn-group btn-group-justified" role="group" aria-label="...">
-    <div class="btn-toolbar" role="toolbar" aria-label="...">
-        <div class="btn-group" role="group" aria-label="Filtrar">
-            
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Género
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li (click) = "onGenderChanged(null)"><a href="#">Todos</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li (click) = "onGenderChanged(1)"><a href="#">Hombre</a></li>
-                            <li (click) = "onGenderChanged(2)"><a href="#">Mujer</a></li>
-                        </ul>
-                    </div>   
-                    
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categoría Edad
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li (click) = "onAgelevelChanged(null)"><a href="#">Todos</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li (click) = "onAgelevelChanged(10)"><a href="#">joven</a></li>
-                            <li (click) = "onAgelevelChanged(20)"><a href="#">Adulto</a></li>
-                        </ul>
-                    </div>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" >
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="" alt="">
+                </a>
+            </div>
 
-
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Nivel
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li (click) = "onLevelChanged(null)"><a href="#">Todos</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li (click) = "onLevelChanged(10)"><a href="#">Principiante</a></li>
-                            <li (click) = "onLevelChanged(20)"><a href="#">Básico</a></li>
-                            <li (click) = "onLevelChanged(30)"><a href="#">Intermedio</a></li>
-                            <li (click) = "onLevelChanged(40)"><a href="#">Avanzado</a></li>
-                            <li (click) = "onLevelChanged(50)"><a href="#">Experto</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <!-- Single button -->
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Ordenar <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li (click) = "onSortChanged('evaluation.reliability')"><a href="#">Reputación</a></li>
-                                <li (click) = "onSortChanged('profiles[0].ranking')"><a href="#">Ranking</a></li>
-                                <li (click) = "onSortChanged('zoneconfig.zones[0].city')"><a href="#">Zona</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li (click) = "onSortChanged('username')"><a href="#">nombre</a></li>
-                            </ul>
-                        </div>
-                    </div>
-        </div>
-    </div>
-</div>  
-
-<div class="row">
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail" *ngFor="#sm of sportmen | paginate:{currentPage: 1, itemsPerPage: pageSize, totalItems: sportmenSize}">
-            <img [src]="sm.img" class="img-circle" alt="..." width="304" height="236">
-            <div class="caption">
-                <h3><a [routerLink]="['/SmprofileDetails', {username: sm.username}]">{{sm.username}}</a></h3>
-                <h4><spa name="city">{{sm.zoneconfig.zones[0].city}}</spa>,<spa name="country">{{sm.zoneconfig.zones[0].country}}</spa></h4>
-                <ul class="list-inline" name ="sports">
-                    <li><span class="label label-info">{{sm.preferedsports[0]}}</span></li>
-                    <li><span class="label label-info">{{sm.preferedsports[1]}}</span></li>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-home"> </span></a></li>
                 </ul>
-                <div class="progress" name="performance" id ="performance">
-                    <div class="progress-bar progress-bar-success" style="width: 35%">
-                        <span class="sr-only">35% Complete (won)</span>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                         <div class="input-group">
+                                <input type="text" class="form-control" #searchtext [(ngModel)]="searchname" placeholder ="Buscar por nombre">
+                                <span class="input-group-btn" ><button class="btn "> <span class="glyphicon glyphicon-search"></span> </button> </span>
+                         </div>
                     </div>
-                    <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
-                        <span class="sr-only">20% Complete (drawn)</span>
-                    </div>
-                    <div class="progress-bar progress-bar-danger" style="width: 10%">
-                        <span class="sr-only">10% Complete (lost)</span>
-                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+
+                    </ul>
+                </form>
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-calendar"> Calendario</span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-flag"> Eventos</span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-sort-by-attributes"> Ranking</span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-globe"> Establecimientos </span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-bell"> Notificaciones</span><span class="badge">2</span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-star"> Favoritos </span></a></li>
+                    <li class="" [routerLink]="['/Profile']"><a href="#"><span class="glyphicon glyphicon-user"> Usuario</span></a></li> 
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-question-sign"> </span></a></li>                     
+                </ul>                     
+            </div>
+       
+        </div>
+    </nav>      
+
+
+    <div class="container-fluid" style="padding-top:60px;">
+
+    </div>
+                        
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <span class="glyphicon glyphicon-glass"></span> Deportes 
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                        <div class="btn-group btn-group-justified" role="group" aria-label="..." name ="sports">
+                            <div class="btn-group" role="group" name="othersports">
+                                <ul class="btn" name="">
+                                    <li><a href="#"  (click) = "onSportChanged('tennis')">Tenis</a> <span class="badge">134</span></li>
+                                    <li><a href="#"  (click) = "onSportChanged('soccer')">Fútbol</a> <span class="badge">290</span></li>
+                                    <li><a href="#"  (click) = "onSportChanged('bike')">Ciclismo</a> <span class="badge">230</span></li>
+                                    <li><a href="#"  (click) = "onSportChanged('running')">Running</a> <span class="badge">332</span></li>
+                                    <li><a href="#"  (click) = "onSportChanged('trekking')">Trekking</a> <span class="badge">23</span></li>
+                                    <li><a href="#"  (click) = "onSportChanged('hiking')">Hiking</a> <span class="badge">32</span></li>
+                                </ul>
+                            </div>
+                        </div>  
                 </div>
-        
-                <ul class="list-group">
-                    <li class="list-group-item" id= "valuation" name ="valuation">
-                        <span class="badge">{{sm.evaluation.reliability}}</span> Reputación
-                    </li>
-                    <li class="list-group-item" id ="ranking" name ="ranking">
-                        Nivel <span class="label label-success">{{sm.profiles[0].level}}</span>  <span class="label label-info">{{sm.preferedsports[0]}}</span>
-                        <span class="badge">{{sm.profiles[0].ranking}}</span>
-                    </li>
-                </ul>
-        
-                <p><a href="#" class="btn btn-primary" role="button" id ="invite" name = "invite">Invitar</a> 
-                    <a href="#" class="btn btn-default" role="button" id="profile" name ="profile">Ficha</a>
-                    <a href="#" class="btn btn-default" role="button" id = "calendar" name="calendar">Calendario</a>
-                </p>
-                
-             </div> 
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="glyphicon glyphicon-filter"></span> Filtrar
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                        <div class="list-group">
+                            <button type="button" class="list-group-item" [class.active]="gender==null" (click) = "onGenderChanged(null)">Todos</button>
+                            <button type="button" class="list-group-item" [class.active]="gender==1" (click) = "onGenderChanged(1)">Hombre</button>
+                            <button type="button" class="list-group-item" [class.active]="gender==2" (click) = "onGenderChanged(2)">Mujer</button>
+                        </div>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item" [class.active]="agelevel==null" (click) = "onAgelevelChanged(null)">Todos</button>
+                            <button type="button" class="list-group-item" [class.active]="agelevel==10" (click) = "onAgelevelChanged(10)">Joven</button>
+                            <button type="button" class="list-group-item" [class.active]="agelevel==20" (click) = "onAgelevelChanged(20)">Adulto</button>
+                        </div>            
+                        <div class="list-group">
+                            <button type="button" class="list-group-item" [class.active]="level==null" (click) = "onLevelChanged(null)">Todos</button>
+                            <button type="button" class="list-group-item" [class.active]="level==10" (click) = "onLevelChanged(10)">Principiante</button>
+                            <button type="button" class="list-group-item" [class.active]="level==20" (click) = "onLevelChanged(20)">Básico</button>
+                            <button type="button" class="list-group-item" [class.active]="level==30" (click) = "onLevelChanged(30)">Intermedio</button>
+                            <button type="button" class="list-group-item" [class.active]="level==40" (click) = "onLevelChanged(40)">Avanzado</button>
+                            <button type="button" class="list-group-item" [class.active]="level==50" (click) = "onLevelChanged(50)">Experto</button>
+                        </div>
+            
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <span class="glyphicon glyphicon-sort"></span> Ordenar
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+
+                    <div class="list-group">
+                         <button type="button" class="list-group-item" [class.active]="sortname=='reliability'" (click) = "onSortChanged('evaluation.reliability')">Reputación</button>
+                         <button type="button" class="list-group-item" [class.active]="sortname=='ranking'" (click) = "onSortChanged('profiles[0].ranking')">Ranking</button>
+                         <button type="button" class="list-group-item" [class.active]="sortname=='zoneconfig.zones[0].city'" (click) = "onSortChanged('zoneconfig.zones[0].city')">Zona</button>
+                         <button type="button" class="list-group-item" [class.active]="sortname=='username'" (click) = "onSortChanged('username')">nombre</button>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<div>
-    <div> <pagination-controls (change)="onPageChanged($event.page)"></pagination-controls></div>
-</div>
 
+
+    <div class="container" >
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail" *ngFor="#sm of sportmen | paginate:{currentPage: 1, itemsPerPage: pageSize, totalItems: sportmenSize}">
+                <img [src]="sm.img" class="img-circle" alt="..." width="171" height="180">
+                <div class="caption">
+                    <h3><a [routerLink]="['/SmprofileDetails', {username: sm.username}]">{{sm.username}}</a></h3>
+                    <h4><spa name="city">{{sm.zoneconfig.zones[0].city}}</spa>,<spa name="country">{{sm.zoneconfig.zones[0].country}}</spa></h4>
+                    <ul class="list-inline" name ="sports">
+                        <li><span class="label label-info">{{sm.preferedsports[0]}}</span></li>
+                        <li><span class="label label-info">{{sm.preferedsports[1]}}</span></li>
+                    </ul>
+            
+                    <ul class="list-group">
+                        <li class="list-group-item" id= "valuation" name ="valuation">
+                            <span class="badge">{{sm.evaluation.reliability}}</span> Reputación
+                        </li>
+                        <li class="list-group-item" id ="ranking" name ="ranking">
+                            Nivel <span class="label label-success">{{sm.profiles[0].level}}</span>  <span class="label label-info">{{sm.preferedsports[0]}}</span>
+                            <span class="badge">{{sm.profiles[0].ranking}}</span>
+                        </li>
+                    </ul>
+            
+                    <p><a href="#" class="btn btn-primary" role="button" id ="invite" name = "invite">Invitar</a> 
+                        <a href="#" class="btn btn-default" role="button" id="profile" name ="profile">Ficha</a>
+                        <a href="#" class="btn btn-default" role="button" id = "calendar" name="calendar">Calendario</a>
+                    </p>
+                    
+                 </div> 
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-8">
+            <sebm-google-map 
+                [latitude]="0"
+                [longitude]="0"
+                [zoom]="1">
+                <div *ngFor="#party of parties">
+                  <sebm-google-map-marker
+                    *ngIf="party.location.lat"
+                    [latitude]="party.location.lat"
+                    [longitude]="party.location.lng">
+                  </sebm-google-map-marker>
+                </div>
+            </sebm-google-map>        
+        </div>
+
+    </div>
+
+
+    <div>
+        <pagination-controls (change)="onPageChanged($event.page)"></pagination-controls>
+    </div>
 
    
 </body>

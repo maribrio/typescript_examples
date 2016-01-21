@@ -1,0 +1,122 @@
+<head>
+    <meta charset="utf-8"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="interfaces-classes.js"> </script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" >
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="" alt="">
+                </a>
+            </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-home"> </span></a></li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                         <div class="input-group">
+                                <input type="text" class="form-control" #searchtext [(ngModel)]="searchname" placeholder ="Buscar por nombre">
+                                <span class="input-group-btn" ><button class="btn "> <span class="glyphicon glyphicon-search"></span> </button> </span>
+                         </div>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+
+                    </ul>
+                </form>
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-calendar"> Calendario</span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-flag"> Eventos</span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-sort-by-attributes"> Ranking</span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-globe"> Establecimientos </span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-bell"> Notificaciones</span><span class="badge">2</span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-star"> Favoritos </span></a></li>
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-user"> Usuario</span></a></li> 
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-question-sign"> </span></a></li>                     
+                </ul>                     
+            </div>
+       
+        </div>
+    </nav>      
+
+
+    <div class="container" style="padding-top:60px;">
+        <div class="btn-toolbar" role="toolbar" aria-label="...">
+            <button type="" class="btn btn-default " id="back" (click)="Back()"><span class="glyphicon glyphicon-menu-left"></span></button>
+            <div class="btn-group" role="group">
+                <button type="" class="btn btn-default hide" id="add" (click)="Save()"><span class="glyphicon glyphicon-plus"></span></button>
+                <button type="" class="btn btn-default" id="save" (click)="Save()"><span class="glyphicon glyphicon-save"></span></button>
+                <button type="" class="btn btn-default hide" id="remove" (click)="Remove()"><span class="glyphicon glyphicon-remove"></span></button>
+                <button type="" class="btn btn-default hide" role="group" id="filter" (click)="Filter()"><span class="glyphicon glyphicon-filter"></span></button>
+                <button type="" class="btn btn-default hide" role="group" id="sort" (click)="Sort()"><span class="glyphicon glyphicon-sort"></span></button>
+             </div>
+            <div class="btn-group" role="group">
+                <button type="" class="btn btn-default hide" id="edit" (click)="Edit()"><span class=""></span>editar</button>
+                <button type="" class="btn btn-default hide" id="OK" (click)="OK()"><span class=""></span>OK</button>
+                <button type="" class="btn btn-default hide" id="cancel" (click)="Cancel()"><span class=""></span>cancelar</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+                <div class="container">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed">
+                            <tr *ngFor="#sm of sports | search:searchname" (click)="OnSelect(sm)" [class.active]="sm.selected">
+                                <td>
+                                    <div class="input-group">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-control"  [(ngModel)]="sm.selected">
+                                    </div> 
+                                    </div>                                    
+                                </td>
+                                <td>
+                                    <img src="../../public/png/{{sm.images.webicon}}" *ngIf="sm.images?.webicon" class = "img-responsive" alt="" heigth="24px" width="24px">
+                                    <p class="text-primary">
+                                        {{sm.name}}
+                                    </p>                                     
+                                </td>
+                                <td>
+                                    <span class="label label-success">{{sm.status}}</span>
+
+                                    <span class="label label-info">{{sm.type}}</span>
+                                </td>
+                                <td>
+                                    <span class="label label-warning " [class.hide]="sm.allocation.single" >individual</span>
+                                    <span class="label label-warning "  [class.hide]="sm.allocation.group">grupal</span>
+                                    <span class="label label-warning "  [class.hide]="sm.allocation.collective" >colectivo</span>
+                                </td>
+                                <td>
+                                    <label>Mínimo</label>
+                                    <span class="label label-default">{{sm.participants.min}}</span>
+                                    <label>máximo</label>
+                                    <span class="label label-default">{{sm.participants.max}}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+ 
+ 
+ 
+
+
+</body>
