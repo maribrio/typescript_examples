@@ -1,96 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,, shrink-to-fit=no">
     <script type="text/javascript" src="interfaces-classes.js"> </script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/g/bootstrap.material-design@0.5.7(css/bootstrap-material-design.min.css+css/ripples.min.css+css/bootstrap-material-design.css+css/ripples.css)">
+    
 </head>
 
 <body>
-    <form>
-        <div class="form-group">
-            <label for="gender">Género</label>
+    <form class="form-horizontal">
+      <div class="container">
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label" for="gender">Género</label>
+            <div class="col-md-9">
             <select class="form-control" name = "gender" id="gender">
                 <option>Hombre</option>
                 <option>Mujer</option>
             </select>
+            </div>
+            
         </div>
-        <div class="form-group">
-            <label for="name">Nombre</label>
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label" for="name">Nombre</label>
+            <div class="col-md-9">
             <input type="text" class="form-control" name ="name" id="name" placeholder="Jane Doe" required>
             <span id="helpBlock" class="help-block"> nombre a publicar en su perfil.</span>
+            </div>
         </div>
         
-        <div class="form-group">
-            <label for="Email">Email</label>
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label" for="Email">Email</label>
+            <div class="col-md-9">
             <input type="email" class="form-control" name = "Email" id="Email" placeholder="Email">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="birthdate">Fecha de nacimiento</label>
-            <input type="datetime" class="form-control" name="birthdate" id="birthdate" placeholder="fecha">
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label" for="birthdate">Fecha de nacimiento</label>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <div class="input-group-addon">mm/dd/yy</div>
+                    <input type="datetime" class="form-control" name="birthdate" id="birthdate" placeholder="fecha">
+                </div>
+            </div>
         </div>
     
         <div class="form-group">
-            <label for="city">Ciudad</label>
-            <input type="text" class="form-control" name="city" id="city" placeholder="Jane Doe">
-        </div>
-        <div class="form-group">
-            <label for="country">Pais</label>
-            <select class="form-control" name="country" id="country">
-                <option>Alemania</option>
-                <option>Argentina</option>
-                <option>Chile</option>
-                <option>USA</option>
-                <option>Peru</option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label for="exampleInputFile">foto</label>
-            <input type="file" id="photo" name ="photo">
-            <p class="help-block">seleccione fotografia</p>
-        </div>
-        
-        <div class="form-group">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                        Tenis
-                </label>
+            <label class="col-md-3 form-control-label" for="city">Ciudad</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="city" id="city" placeholder="Jane Doe">
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                        Futbol
-                </label>
-                    <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                        Running
-                </label>
+        </div>
+        <div class="form-group row">
+            <label for="country" class="col-md-3 form-control-label">Pais</label>
+            <div class="col-md-9">
+                <select class="form-control col-md-9" name="country" id="country">
+                    <option>Alemania</option>
+                    <option>Argentina</option>
+                    <option>Chile</option>
+                    <option>USA</option>
+                    <option>Peru</option>
+                </select>
             </div>
         </div>
         
-        <div class="form-group">  
+
+        <div class="form-group row">
+            <label  class="col-md-3 form-control-label" for="exampleInputFile">foto</label>
+            <div class="col-md-9">
+                <input type="file" id="photo" name ="photo">
+                <p class="help-block">seleccione fotografia</p>
+            </div>
+        </div>
+        
+        
+        <div class="form-group row">  
             <div class="checkbox">
-                <label>
+                <label class="form-control-label">
                     <input type="checkbox" value="">
                         recibir notificaciones para encuentros
                 </label>
             </div>
-            <div class="checkbox disabled">
-                <label>
-                    <input type="checkbox" value="" disabled>
+            <div class="checkbox">
+                <label class="form-control-label">
+                    <input type="checkbox" value="">
                         publicar calendario
                 </label>
             </div>
         </div>
     
+        <div class="form-group "> 
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
     
-    <button type="submit" class="btn btn-default">Submit</button>
-    
+      </div>
     </form>
+    
+    <script src="https://cdn.jsdelivr.net/g/bootstrap.material-design@0.5.7(js/material.min.js+js/ripples.min.js)"></script>
 </body>
+
+</html>
